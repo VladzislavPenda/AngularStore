@@ -1,0 +1,43 @@
+:host {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  animation: fadein 0.2s linear;
+
+  &.right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    > div {
+      position: relative;
+      max-width: 90%;
+      height: 100%;
+      background: #fff;
+      overflow: auto;
+    }
+  }
+
+  &.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    > div {
+      position: relative;
+
+      max-width: 90%;
+      max-height: 90%;
+
+      background: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 5px 1px #555;
+    }
+  }
+}

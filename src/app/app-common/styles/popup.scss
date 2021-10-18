@@ -1,0 +1,10 @@
+:host {
+  --hor-pad: var(--popup-hor-padding, 2em);
+  display: var(--popup-display, block);
+  width: var(--popup-width, 35em);
+  max-width: var(--popup-max-width, 100%);
+}
+
+.header-popup {
+  border-bottom: rgb(81, 81, 189);
+}
