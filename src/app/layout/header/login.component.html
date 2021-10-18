@@ -1,7 +1,13 @@
 <header class="popup-header">Войти</header>
 
 <form [formGroup]="form" (ngSubmit)="login()">
-  <input type="text" formControlName="login" />
-  <input type="password" formControlName="password" />
+  <span>Логин:</span>
+  <app-textbox></app-textbox>
+  <span>Пароль:</span>
+  <app-textbox
+    textType="password"
+    formControlName="password"
+    appValueAccessor
+  ></app-textbox>
   <button type="submit">Войти</button>
 </form>

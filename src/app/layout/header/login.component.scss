@@ -1,4 +1,11 @@
-div {
-  width: 10vh;
-  height: 10vh;
+:host {
+  --popup-width: 20em;
+}
+
+span {
+  display: block;
+}
+
+input {
+  display: block;
 }

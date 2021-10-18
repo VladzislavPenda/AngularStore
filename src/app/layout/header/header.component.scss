@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  height: 7vh;
+  margin: auto;
+
+  .button-container {
+    display: flex;
+    background-color: rgb(48, 46, 46);
+    padding: 1vh 20%;
+    justify-content: end;
+  }
+
+  .navigation-panel {
+    display: flex;
+    padding: 0 20%;
+    justify-content: space-between;
+
+    .nav-menu {
+      width: 50%;
+
+      span {
+        font-size: 20px;
+      }
+    }
+  }
+}
