@@ -1,6 +1,5 @@
 :host {
   display: block;
-  height: 7vh;
   margin: auto;
 
   .button-container {
@@ -13,14 +12,36 @@
   .navigation-panel {
     display: flex;
     padding: 0 20%;
-    justify-content: space-between;
+    justify-content: space-around;
 
     .nav-menu {
-      width: 50%;
+      padding: 3vh 0;
+      width: 55%;
+      display: flex;
+      justify-content: center;
 
       span {
+        width: 20%;
+        text-align: center;
+        margin: 3px 15px;
         font-size: 20px;
       }
+
+      span:hover {
+        border-radius: 8px;
+        background-color: #fdb819;
+        transition: all 0.6s ease;
+      }
+    }
+
+    .nav-icons {
+      padding: 3vh 0;
+      width: 35px;
+      height: 35px;
     }
   }
+}
+
+.cart-container {
+  background-color: burlywood;
 }

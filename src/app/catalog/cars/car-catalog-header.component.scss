@@ -1,0 +1,47 @@
+:host {
+  display: block;
+  height: 4vh;
+  background-color: #fdb819;
+}
+
+.fg--search {
+  background: white;
+  position: relative;
+  width: 40%;
+  border-radius: 5px;
+  top: 0.5vh;
+  left: 40%;
+}
+
+.fg--search input {
+  width: 100%;
+  padding: 10px 0 10px 10px;
+  display: block;
+}
+
+.fg--search button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 7px 10px;
+  z-index: 2;
+}
+
+.fa-search {
+  color: grey;
+}
+
+.fg--search input:focus + button .fa-search {
+  color: black;
+}
+
+.search-input {
+  border: none;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+}

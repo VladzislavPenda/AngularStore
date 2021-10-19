@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OverlayRootService } from 'src/app/app-core/overlay-root.service';
 import { LoginComponent } from './login.component';
+import { RegisterComponent } from './register.component';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,15 @@ export class HeaderComponent implements OnInit {
       .show(LoginComponent)
       .onClose()
       .subscribe((result) => {
+        this.overlay.clear();
+      });
+  }
+
+  public register() {
+    this.overlay
+      .show(RegisterComponent)
+      .onClose()
+      .subscribe(() => {
         this.overlay.clear();
       });
   }

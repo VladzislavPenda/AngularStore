@@ -1,14 +1,19 @@
 <!-- <app-logo></app-logo> -->
 <div class="button-container">
   <button (click)="login()">Войти</button>
-  <button>Зарегистрироваться</button>
+  <button (click)="register()">Зарегистрироваться</button>
 </div>
 <div class="navigation-panel">
   <app-logo></app-logo>
-  <div class="nav-menu">
+  <div class="nav-menu text">
     <span>About Us</span>
     <span>Contacts</span>
     <span>Catalog</span>
   </div>
-  <app-icon-fontawesome>&#xf07a;</app-icon-fontawesome>
+  <img class="nav-icons" src="../../../assets/images/heart-thin.svg" alt="" />
+  <img
+    class="nav-icons"
+    src="../../../assets/images/shopping-cart.svg"
+    alt=""
+  />
 </div>
