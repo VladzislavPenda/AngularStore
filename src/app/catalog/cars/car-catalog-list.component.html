@@ -1,1 +1,18 @@
 <p>car-catalog-list works!</p>
+<div class="con">
+  <div>con2</div>
+  <div>con2</div>
+  <div>con2</div>
+  <div>con2</div>
+  <div>con2</div>
+</div>
+
+<ng-container *ngIf="items != undefined">
+  <div *ngFor="let item of items | async">
+    {{ item.model }} - {{ item.price }} - {{ item.photos[0] }}
+
+    <app-image imageId="{{ item.photos[0] }}"></app-image>
+    <img src="{{ item.photos[0] }}" alt="" />
+  </div>
+  <!-- <img src="d33545d5-b4ed-4dc6-90e6-23c20954d32b" alt="" /> -->
+</ng-container>

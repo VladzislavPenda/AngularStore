@@ -6,10 +6,12 @@ import { CarCatalogComponent } from './cars/car-catalog.component';
 import { CarCatalogHeaderComponent } from './cars/car-catalog-header.component';
 import { CarCatalogListComponent } from './cars/car-catalog-list.component';
 import { AppCommonModule } from '../app-common/app-common.module';
+import { CarListResolver } from './car-list.resolver';
 
 const routes: Routes = [
   {
     path: '',
+    // resolve: { data: CarListResolver },
     component: CarCatalogComponent,
   },
   // {
@@ -26,5 +28,6 @@ const routes: Routes = [
     CarCatalogHeaderComponent,
     CarCatalogListComponent,
   ],
+  providers: [CarListResolver],
 })
 export class CatalogModule {}

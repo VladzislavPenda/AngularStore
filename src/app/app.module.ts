@@ -3,6 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { AppCommonModule } from './app-common/app-common.module';
+import { AppCoreModule } from './app-core/app-core.module';
 import { OverlayRootService } from './app-core/overlay-root.service';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +27,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    AppCoreModule,
     RouterModule.forRoot(routes),
     BrowserModule,
     AppRoutingModule,

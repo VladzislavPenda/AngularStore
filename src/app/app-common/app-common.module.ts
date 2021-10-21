@@ -8,6 +8,8 @@ import { CommonValueAccessorDirective } from './common-value-accessor.directive'
 import { TextboxComponent } from './textbox.component';
 import { InputComponent } from './input.directive';
 import { IconFontAwesomeSolidComponent } from './icon-font-awesome.component';
+import { ImageViewDirective } from './image-view.directive';
+import { ImageComponent } from './image.component';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
@@ -18,6 +20,8 @@ import { IconFontAwesomeSolidComponent } from './icon-font-awesome.component';
     CommonValueAccessorDirective,
     TextboxComponent,
     IconFontAwesomeSolidComponent,
+    ImageViewDirective,
+    ImageComponent,
   ],
   exports: [
     LogoComponent,
@@ -27,6 +31,8 @@ import { IconFontAwesomeSolidComponent } from './icon-font-awesome.component';
     CommonValueAccessorDirective,
     TextboxComponent,
     IconFontAwesomeSolidComponent,
+    ImageViewDirective,
+    ImageComponent,
   ],
 })
 export class AppCommonModule {}
