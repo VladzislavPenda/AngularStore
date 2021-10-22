@@ -1,3 +1,22 @@
-.con {
-  display: flex;
+:host {
+  margin: 10px;
+
+  .product-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 1rem 5%;
+  }
+
+  .product-card {
+    margin: 1rem 0;
+    width: 21rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  app-image {
+    width: 100%;
+    height: 14rem;
+    // height: 20rem;
+  }
 }

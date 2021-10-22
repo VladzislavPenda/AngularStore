@@ -1,4 +1,9 @@
 main {
-  width: 60%;
+  width: 80%;
   margin: auto;
+}
+@media (max-width: 90rem) {
+  main {
+    width: 100%;
+  }
 }

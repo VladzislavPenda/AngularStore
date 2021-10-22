@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { makeApiUrl } from '../app-common/app-common';
 import { HttpClient } from '@angular/common/http';
 import { Lot } from '../catalog/cars/domain';
+import { FilterDto } from './dto/filterDto';
+import { LoginDto } from './dto/loginDto';
 
 @Injectable()
 export class BackendService {
@@ -13,7 +15,8 @@ export class BackendService {
       return this.http.get(url);
     },
 
-    getPagedModels$: () => {
+    getPagedModels$: (filterDto?: FilterDto) => {
+      const queryParams = toQueryParams(filterDto);
       const url = makeApiUrl(`shopModels`);
       return this.http.get<Lot[]>(url);
     },
@@ -32,4 +35,22 @@ export class BackendService {
       return this.http.get(url, { responseType: 'blob', observe: 'response' });
     },
   };
+
+  public auth = {
+    login$: (login: string, password: string) => {
+      const url = makeApiUrl(`authentication/login`);
+      return this.http.post(url, { username: login, password });
+    },
+  };
+}
+
+function toQueryParams(obj: { [key: string]: any }) {
+  if (obj == undefined) return '';
+
+  let queryParamsString = '?';
+  Object.entries(obj).forEach((element) => {
+    queryParamsString += `${element[0]}=${element[1]}&`;
+  });
+
+  return queryParamsString;
 }
