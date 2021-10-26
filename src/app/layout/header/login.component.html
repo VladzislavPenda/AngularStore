@@ -1,13 +1,16 @@
 <header class="popup-header">Войти</header>
+<ng-container *ngIf="error === 401">Неверный логин или пароль</ng-container>
 
 <form [formGroup]="form" (ngSubmit)="login()">
   <span>Логин:</span>
-  <app-textbox></app-textbox>
+  <input type="text" formControlName="login" />
+  <!-- <app-textbox appValueAccessor formControlName="login"></app-textbox> -->
   <span>Пароль:</span>
-  <app-textbox
+  <input type="password" formControlName="password" />
+  <!-- <app-textbox
     textType="password"
-    formControlName="password"
     appValueAccessor
-  ></app-textbox>
+    formControlName="password"
+  ></app-textbox> -->
   <button type="submit">Войти</button>
 </form>

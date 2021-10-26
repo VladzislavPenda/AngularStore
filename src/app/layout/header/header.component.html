@@ -1,7 +1,12 @@
 <!-- <app-logo></app-logo> -->
 <div class="button-container">
-  <button (click)="login()">Войти</button>
-  <button (click)="register()">Зарегистрироваться</button>
+  <ng-container *ngIf="!isAuthorised; else temp">
+    <button (click)="login()">Войти</button>
+    <button (click)="register()">Зарегистрироваться</button>
+  </ng-container>
+  <ng-template #temp>
+    <button (click)="logout()">Выйти</button>
+  </ng-template>
 </div>
 <div class="navigation-panel">
   <app-logo></app-logo>

@@ -1,1 +1,8 @@
-<input [type]="textType" />
+<input
+  [type]="textType"
+  #input
+  type="text"
+  [disabled]="disabled || null"
+  [attr.autocomplete]="autocomplete"
+  [value]="isFinite(value) ? value : ''"
+/>

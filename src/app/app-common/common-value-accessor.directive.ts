@@ -17,10 +17,10 @@ import { InputComponent } from './input.directive';
 })
 export class CommonValueAccessorDirective implements ControlValueAccessor {
   public constructor(
-    private readonly component: InputComponent<any>,
-    private readonly elementRef: ElementRef,
-    private readonly renderer: Renderer2
-  ) {}
+    private readonly component: InputComponent<any>
+  ) // private readonly elementRef: ElementRef,
+  // private readonly renderer: Renderer2
+  {}
 
   public writeValue(obj: any): void {
     if (this.component.value !== obj) this.component.setValue(obj);
@@ -34,15 +34,15 @@ export class CommonValueAccessorDirective implements ControlValueAccessor {
     this.touch = fn;
   }
 
-  public setDisabledState(isDisabled: boolean): void {
-    if (isDisabled) {
-      this.component.setDisabledState(true);
-      this.renderer.setAttribute(this.elementRef.nativeElement, 'disabled', '');
-    } else {
-      this.component.setDisabledState(false);
-      this.renderer.removeAttribute(this.elementRef.nativeElement, 'disabled');
-    }
-  }
+  // public setDisabledState(isDisabled: boolean): void {
+  //   if (isDisabled) {
+  //     this.component.setDisabledState(true);
+  //     this.renderer.setAttribute(this.elementRef.nativeElement, 'disabled', '');
+  //   } else {
+  //     this.component.setDisabledState(false);
+  //     this.renderer.removeAttribute(this.elementRef.nativeElement, 'disabled');
+  //   }
+  // }
 
   public change = () => {
     /* noop */

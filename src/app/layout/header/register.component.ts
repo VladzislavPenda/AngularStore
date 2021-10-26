@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { PopupComponent } from 'src/app/app-common/popup.component';
+import { authSelector } from 'src/app/state/auth/selectors';
+import { AppState } from 'src/app/state/domain';
+import { Observable } from 'rxjs';
+import { UserState } from 'src/app/state/auth/domain';
 
 @Component({
   selector: 'app-register',
@@ -7,11 +12,18 @@ import { PopupComponent } from 'src/app/app-common/popup.component';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent extends PopupComponent<void> implements OnInit {
-  constructor() {
+  public userState$: Observable<UserState>;
+
+  constructor(private store$: Store<AppState>) {
     super();
+    this.userState$ = this.store$.pipe(select(authSelector));
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userState$ = this.store$.pipe(select(authSelector));
+    let d = this.store$.pipe(select(authSelector));
+    d.subscribe((e) => console.log(e));
+  }
 
   public register() {
     this.close();

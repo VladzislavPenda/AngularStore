@@ -1,2 +1,9 @@
 <p>register works!</p>
 <button (click)="register()"></button>
+
+<ng-container *ngIf="userState$ | async as userInfo; else empty">
+  {{ userInfo.user.email }}
+</ng-container>
+<ng-template #empty>
+  <button class="app-button blue-button">Создать частный справочник</button>
+</ng-template>

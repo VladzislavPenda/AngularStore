@@ -1,4 +1,12 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChange,
+} from '@angular/core';
 import { InputComponent } from './input.directive';
 
 @Component({
@@ -8,8 +16,8 @@ import { InputComponent } from './input.directive';
   styleUrls: ['./textbox.component.scss'],
 })
 export class TextboxComponent
-  extends InputComponent<string | number | Date>
-  implements OnInit
+  extends InputComponent<string>
+  implements OnInit, OnChanges
 {
   @Input() textType?: 'text' | 'password';
   constructor(private readonly cdr: ChangeDetectorRef) {
@@ -18,12 +26,12 @@ export class TextboxComponent
 
   ngOnInit() {}
 
-  public onInput(value: string) {
-    this.setInteractiveValue(value.trim());
+  public ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
   }
 
-  public onInputNumberValue(value: number) {
-    this.setInteractiveValue(value);
+  public onInput(value: string) {
+    this.setInteractiveValue(value.trim());
   }
 
   public setValue(value: TextboxComponent['value']) {

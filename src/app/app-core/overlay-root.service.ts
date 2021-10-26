@@ -5,7 +5,7 @@ import { Overlay, OverlayConfig, Popup } from '../domain/overlay';
   providedIn: 'root',
 })
 export class OverlayRootService implements Overlay {
-  private overlayRef!: Overlay;
+  private overlayRef: Overlay;
   // constructor(private overlay: Overlay) {
   //   this.overlayRef = overlay
   // }
