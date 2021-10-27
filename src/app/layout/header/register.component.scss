@@ -1,0 +1,70 @@
+:host {
+  display: block;
+  --popup-width: 30rem;
+  --popup-height: 33rem;
+  // text-align: center;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem 0 1.5rem;
+    text-align: left;
+    border-bottom: #fdb819 1px solid;
+
+    .text {
+      --text-font-size: 20px;
+    }
+
+    .close-icon {
+      font-size: 1.3em;
+      color: slategray;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  dd {
+    &:not(:first-child) {
+      margin-top: 1.5rem;
+    }
+
+    > button {
+      padding: 0.5rem 2rem;
+      transition: all 0.5s;
+      display: inline-block;
+    }
+
+    > button span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }
+
+    > button span:after {
+      content: "\00BB";
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+
+    > button:hover span {
+      padding-right: 10px;
+    }
+
+    > button:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
+
+    &:last-child {
+      margin: 0;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+  }
+}

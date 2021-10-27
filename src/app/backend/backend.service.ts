@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Lot } from '../catalog/cars/domain';
 import { FilterDto } from './dto/filterDto';
 import { LoginDto } from './dto/loginDto';
+import { RegisterUserDto } from './dto/registerUserDto';
 
 @Injectable()
 export class BackendService {
@@ -40,6 +41,11 @@ export class BackendService {
     login$: (login: string, password: string) => {
       const url = makeApiUrl(`authentication/login`);
       return this.http.post(url, { username: login, password });
+    },
+
+    register$: (registerInfo: RegisterUserDto) => {
+      const url = makeApiUrl('authentication');
+      return this.http.post(url, registerInfo);
     },
   };
 }

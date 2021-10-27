@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { FormGroup } from '@angular/forms';
 import { BackendService } from 'src/app/backend/backend.service';
-import { AppState } from 'src/app/state/domain';
+import { RegisterUserDto } from 'src/app/backend/dto/registerUserDto';
 
 @Injectable()
 export class AuthService {
@@ -11,5 +11,21 @@ export class AuthService {
     return this.backendService.auth.login$(login, password);
   }
 
-  public register() {}
+  public register(form: FormGroup) {
+    const registrationData = this.formToRegisterDto(form);
+    return this.backendService.auth.register$(registrationData);
+  }
+
+  private formToRegisterDto(form: FormGroup): RegisterUserDto {
+    const value = form.value;
+    return {
+      firstName: value.firstName,
+      lastName: value.lastName,
+      userName: value.userName,
+      password: value.password,
+      email: value.email,
+      phoneNumber: value.phoneNumber,
+      role: ['User'],
+    };
+  }
 }

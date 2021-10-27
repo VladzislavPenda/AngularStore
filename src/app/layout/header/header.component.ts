@@ -1,9 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { OverlayRootService } from 'src/app/app-core/overlay-root.service';
-import { logout, loadToken } from 'src/app/state/auth/action';
-import { UserState } from 'src/app/state/auth/domain';
+import { User } from 'src/app/domain/user';
+import { logout } from 'src/app/state/auth/action';
 import { authSelector } from 'src/app/state/auth/selectors';
 import { AppState } from 'src/app/state/domain';
 import { LoginComponent } from './login.component';
@@ -13,27 +18,35 @@ import { RegisterComponent } from './register.component';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit {
-  public isAuthorised: boolean = false;
+  public isAuthorised: boolean;
+  public user: User;
   constructor(
     private overlay: OverlayRootService,
-    private store$: Store<AppState>
-  ) {
-    this.store$.dispatch(loadToken());
-    this.store$.select(authSelector).subscribe((e) => {
-      if (e != {}) this.isAuthorised = true;
-    });
-  }
+    private store$: Store<AppState>,
+    private cdr: ChangeDetectorRef
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.store$
+      .select(authSelector)
+      .pipe(map((e) => e.user))
+      .subscribe((e) => {
+        if (e != undefined) this.isAuthorised = true;
+        this.user = e;
+        return e;
+      });
+  }
 
   public login() {
     this.overlay
       .show(LoginComponent)
       .onClose()
-      .subscribe((result) => {
+      .subscribe(() => {
         this.overlay.clear();
+        this.cdr.detectChanges();
       });
   }
 

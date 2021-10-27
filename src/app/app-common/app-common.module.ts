@@ -10,6 +10,7 @@ import { InputComponent } from './input.directive';
 import { IconFontAwesomeSolidComponent } from './icon-font-awesome.component';
 import { ImageViewDirective } from './image-view.directive';
 import { ImageComponent } from './image.component';
+import { ObjectKeysPipe } from './app-object.pipe';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
@@ -19,6 +20,7 @@ import { ImageComponent } from './image.component';
     OverlayComponent,
     CommonValueAccessorDirective,
     TextboxComponent,
+    ObjectKeysPipe,
     IconFontAwesomeSolidComponent,
     ImageViewDirective,
     ImageComponent,
@@ -28,6 +30,7 @@ import { ImageComponent } from './image.component';
     OverlayComponent,
     ReactiveFormsModule,
     FormsModule,
+    ObjectKeysPipe,
     CommonValueAccessorDirective,
     TextboxComponent,
     IconFontAwesomeSolidComponent,

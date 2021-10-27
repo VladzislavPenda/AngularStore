@@ -1,16 +1,46 @@
-<header class="popup-header">Войти</header>
-<ng-container *ngIf="error === 401">Неверный логин или пароль</ng-container>
+<header class="popup-header">
+  <span class="text">Вход</span>
+  <app-icon-fontawesome class="close-icon" (click)="close()">
+    &#xf00d;
+  </app-icon-fontawesome>
+</header>
 
 <form [formGroup]="form" (ngSubmit)="login()">
-  <span>Логин:</span>
-  <input type="text" formControlName="login" />
-  <!-- <app-textbox appValueAccessor formControlName="login"></app-textbox> -->
-  <span>Пароль:</span>
-  <input type="password" formControlName="password" />
+  <ng-container *ngIf="form.invalid && form.touched && isSubmitted">
+    <p class="error-message">Заполните обязательные поля</p>
+  </ng-container>
+  <ng-container *ngIf="error === 401 && form.valid">
+    <p class="error-message">Неверный логин или пароль</p>
+  </ng-container>
+
+  <dl>
+    <dd>
+      <input
+        type="text"
+        class="app-input"
+        name="name"
+        placeholder="Логин"
+        formControlName="login"
+      />
+    </dd>
+    <!-- <app-textbox appValueAccessor formControlName="login"></app-textbox> -->
+    <!-- <dt>Пароль:</dt> -->
+    <dd>
+      <input
+        class="app-input"
+        type="password"
+        placeholder="Пароль"
+        formControlName="password"
+      />
+    </dd>
+    <dd>
+      <button class="app-button" type="submit"><span>Войти </span></button>
+    </dd>
+  </dl>
+
   <!-- <app-textbox
     textType="password"
     appValueAccessor
     formControlName="password"
   ></app-textbox> -->
-  <button type="submit">Войти</button>
 </form>

@@ -1,9 +1,82 @@
-<p>register works!</p>
-<button (click)="register()"></button>
+<header>
+  <span class="text">Регистрация</span>
+  <app-icon-fontawesome class="close-icon" (click)="close()">
+    &#xf00d;
+  </app-icon-fontawesome>
+</header>
+<form action="" [formGroup]="form" autocomplete="off">
+  <dl>
+    <dd>
+      <input
+        class="app-input"
+        placeholder="Имя"
+        type="text"
+        formControlName="firstName"
+      />
+    </dd>
+    <ng-container *ngIf="form.controls.firstName.touched">
+      <ng-container
+        *ngFor="let item of form.controls.firstName.errors | appObjectKeys"
+        ngSwitch="item"
+      >
+        <ng-container *ngIf=""></ng-container>
+      </ng-container>
+    </ng-container>
+    <dd>
+      <input
+        class="app-input"
+        placeholder="Фамилия"
+        type="text"
+        formControlName="lastName"
+      />
+    </dd>
+    <dd>
+      <input
+        class="app-input"
+        placeholder="Имя на сайте"
+        type="text"
+        formControlName="userName"
+      />
+    </dd>
+    <dd>
+      <input
+        class="app-input"
+        placeholder="Мобильный телефон"
+        type="text"
+        formControlName="mobilePhone"
+      />
+    </dd>
+    <dd>
+      <input
+        class="app-input"
+        placeholder="Email"
+        type="text"
+        formControlName="email"
+      />
+    </dd>
+    <dd>
+      <input
+        class="app-input"
+        placeholder="Пароль"
+        autocomplete="new-password"
+        type="password"
+        formControlName="password"
+      />
+    </dd>
+    <dd>
+      <input
+        class="app-input"
+        placeholder="Повторите пароль"
+        autocomplete="new-password"
+        type="password"
+        formControlName="retypePassword"
+      />
+    </dd>
 
-<ng-container *ngIf="userState$ | async as userInfo; else empty">
-  {{ userInfo.user.email }}
-</ng-container>
-<ng-template #empty>
-  <button class="app-button blue-button">Создать частный справочник</button>
-</ng-template>
+    <dd>
+      <button class="app-button" (click)="register()">
+        <span>Зарегистрироваться</span>
+      </button>
+    </dd>
+  </dl>
+</form>

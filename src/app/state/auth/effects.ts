@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import jwtDecode from 'jwt-decode';
-import { catchError, map, tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { User } from 'src/app/domain/user';
 import { logout, loadToken, loadTokenError, loadTokenSuccess } from './action';
 
@@ -10,6 +10,7 @@ function getClaimsFromToken(token: string) {
   const user: User = {
     email: claims['email'],
     role: claims['permission'],
+    userName: claims['name'],
   };
 
   return user;
@@ -24,10 +25,13 @@ export class TokenEffects {
       ofType(loadToken),
       map(() => {
         const token = localStorage.getItem('token');
-        const user = getClaimsFromToken(token);
+        let user;
+        if (token != null) {
+          user = getClaimsFromToken(token);
+        }
         return { token, user };
       }),
-      map((e) => (e ? loadTokenSuccess(e) : loadTokenError()))
+      map((e) => (e.token != null ? loadTokenSuccess(e) : loadTokenError()))
     )
   );
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BackendService } from 'src/app/backend/backend.service';
@@ -8,6 +8,7 @@ import { Lot } from './domain';
   selector: 'app-car-catalog',
   templateUrl: './car-catalog.component.html',
   styleUrls: ['./car-catalog.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarCatalogComponent implements OnInit {
   public items: Observable<Lot[]>;
