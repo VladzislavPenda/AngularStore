@@ -36,21 +36,17 @@ export class RegisterComponent extends PopupComponent<void> implements OnInit {
   public register() {
     console.log(this.form);
     if (
-      this.form.value.password == this.form.value.retypePassword
-      // this.form.valid
+      this.form.value.password == this.form.value.retypePassword &&
+      this.form.valid
     ) {
       this.authService.register(this.form).subscribe(
-        () => {
-          this.close();
-        },
-        (err) => {
-          console.log(err);
-        }
+        () => this.close(),
+        (err) => console.log(err)
       );
     } else {
       this.isSubmitted = true;
+      this.form.markAllAsTouched();
     }
-    this.close();
   }
 
   private ToForm() {

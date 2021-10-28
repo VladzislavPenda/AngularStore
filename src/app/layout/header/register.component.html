@@ -5,6 +5,12 @@
   </app-icon-fontawesome>
 </header>
 <form action="" [formGroup]="form" autocomplete="off">
+  <ng-container *ngIf="form.invalid && isSubmitted && form.touched">
+    <p class="error-message">Заполните обязательные поля</p>
+  </ng-container>
+
+  <button tooltip="textddd" placement="right">ffff</button>
+
   <dl>
     <dd>
       <input
@@ -62,6 +68,9 @@
         type="password"
         formControlName="password"
       />
+      <button class="info-icon">
+        <app-icon-fontawesome>&#xf129;</app-icon-fontawesome>
+      </button>
     </dd>
     <dd>
       <input

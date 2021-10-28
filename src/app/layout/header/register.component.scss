@@ -1,8 +1,8 @@
 :host {
   display: block;
   --popup-width: 30rem;
-  --popup-height: 33rem;
-  // text-align: center;
+  --popup-height: 35rem;
+  text-align: center;
 
   header {
     display: flex;
@@ -25,7 +25,15 @@
     }
   }
 
+  // dl {
+  //   width: 60%;
+  // }
+
   dd {
+    margin: 0;
+    // position: relative;
+    // width: 50%;
+
     &:not(:first-child) {
       margin-top: 1.5rem;
     }
@@ -66,5 +74,22 @@
       margin-top: 1.5rem;
       text-align: center;
     }
+
+    > input.ng-touched.ng-invalid {
+      border-color: red;
+    }
+
+    // .info-icon {
+    //   background: transparent;
+    //   border: none;
+    //   cursor: pointer;
+    //   display: inline-block;
+    //   font-size: 20px;
+    //   position: absolute;
+    //   top: 0;
+    //   right: 0;
+    //   padding: 7px 10px;
+    //   z-index: 2;
+    // }
   }
 }

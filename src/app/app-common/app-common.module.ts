@@ -11,13 +11,23 @@ import { IconFontAwesomeSolidComponent } from './icon-font-awesome.component';
 import { ImageViewDirective } from './image-view.directive';
 import { ImageComponent } from './image.component';
 import { ObjectKeysPipe } from './app-object.pipe';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TooltipDirective } from './tooltip.directive';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatTooltipModule,
+    // BrowserAnimationsModule,
+  ],
   declarations: [
     AppCommonComponent,
     LogoComponent,
     OverlayComponent,
+    TooltipDirective,
     CommonValueAccessorDirective,
     TextboxComponent,
     ObjectKeysPipe,
@@ -31,10 +41,13 @@ import { ObjectKeysPipe } from './app-object.pipe';
     ReactiveFormsModule,
     FormsModule,
     ObjectKeysPipe,
+    TooltipDirective,
     CommonValueAccessorDirective,
     TextboxComponent,
     IconFontAwesomeSolidComponent,
     ImageViewDirective,
+    // BrowserAnimationsModule,
+    MatTooltipModule,
     ImageComponent,
   ],
 })
