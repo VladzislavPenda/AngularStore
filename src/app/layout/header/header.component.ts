@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
       .subscribe((e) => {
         if (e != undefined) this.isAuthorised = true;
         this.user = e;
-        return e;
+        // return e;
       });
   }
 

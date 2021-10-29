@@ -5,5 +5,5 @@ export interface RegisterUserDto {
   password: string;
   email: string;
   phoneNumber: string;
-  role: string[];
+  roles: string[];
 }

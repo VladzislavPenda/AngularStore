@@ -25,7 +25,7 @@ export class AuthService {
       password: value.password,
       email: value.email,
       phoneNumber: value.phoneNumber,
-      role: ['User'],
+      roles: ['User'],
     };
   }
 }

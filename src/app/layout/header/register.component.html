@@ -8,9 +8,6 @@
   <ng-container *ngIf="form.invalid && isSubmitted && form.touched">
     <p class="error-message">Заполните обязательные поля</p>
   </ng-container>
-
-  <button tooltip="textddd" placement="right">ffff</button>
-
   <dl>
     <dd>
       <input
@@ -49,7 +46,7 @@
         class="app-input"
         placeholder="Мобильный телефон"
         type="text"
-        formControlName="mobilePhone"
+        formControlName="phoneNumber"
       />
     </dd>
     <dd>
@@ -69,7 +66,11 @@
         formControlName="password"
       />
       <button class="info-icon">
-        <app-icon-fontawesome>&#xf129;</app-icon-fontawesome>
+        <app-icon-fontawesome
+          tooltip="Пароль должен содержать хотя бы одну заглавную букву, хотя бы одно число и быть в длину не менее 8 символов"
+          placement="right"
+          >&#xf129;</app-icon-fontawesome
+        >
       </button>
     </dd>
     <dd>

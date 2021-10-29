@@ -6,13 +6,14 @@
     display: flex;
     background-color: rgb(48, 46, 46);
     padding: 1vh 10%;
-    justify-content: end;
+    justify-content: flex-end;
 
     .text {
       color: whitesmoke;
       font-weight: 200;
       font-size: 16px;
       margin-left: 0.5rem;
+      transition: all 0.5s;
 
       &:not(:first-child) {
         padding-left: 0.5rem;
@@ -21,32 +22,36 @@
 
       &:hover {
         cursor: pointer;
+        color: tan;
       }
     }
   }
 
   .navigation-panel {
     display: flex;
-    padding: 0 20%;
+    padding: 0 10%;
     justify-content: space-around;
 
     .nav-menu {
       padding: 3vh 0;
-      width: 55%;
+      width: 70%;
       display: flex;
       justify-content: center;
 
       span {
         width: 20%;
         text-align: center;
-        margin: 3px 15px;
+        margin-left: 10px;
         font-size: 20px;
+      }
+
+      span:not(:last-child) {
+        border-right: 1px solid black;
       }
 
       span:hover {
         cursor: pointer;
-        border-radius: 8px;
-        background-color: #fdb819;
+        color: rgb(206, 162, 105);
         transition: all 0.6s ease;
       }
     }

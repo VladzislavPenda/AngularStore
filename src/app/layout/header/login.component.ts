@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  NgZone,
   OnInit,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -28,7 +29,8 @@ export class LoginComponent extends PopupComponent<void> implements OnInit {
     private store$: Store<AppState>,
     private fb: FormBuilder,
     private authService: AuthService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private zone: NgZone
   ) {
     super();
   }
@@ -50,13 +52,14 @@ export class LoginComponent extends PopupComponent<void> implements OnInit {
           const user: User = {
             email: claims['email'],
             role: claims['permission'],
-            userName: claims['name'],
+            userName: claims['username'],
           };
 
           localStorage.setItem('token', token);
-
           this.store$.dispatch(setToken({ token, user }));
-          this.close();
+          this.zone.run(() => {
+            this.close();
+          });
         },
         (err) => {
           console.log(err);

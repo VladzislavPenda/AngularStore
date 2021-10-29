@@ -11,8 +11,7 @@ import { IconFontAwesomeSolidComponent } from './icon-font-awesome.component';
 import { ImageViewDirective } from './image-view.directive';
 import { ImageComponent } from './image.component';
 import { ObjectKeysPipe } from './app-object.pipe';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { MatTooltipModule } from '@angular/material/tooltip';
 import { TooltipDirective } from './tooltip.directive';
 
 @NgModule({
@@ -20,7 +19,7 @@ import { TooltipDirective } from './tooltip.directive';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    MatTooltipModule,
+    // MatTooltipModule,
     // BrowserAnimationsModule,
   ],
   declarations: [
@@ -47,7 +46,7 @@ import { TooltipDirective } from './tooltip.directive';
     IconFontAwesomeSolidComponent,
     ImageViewDirective,
     // BrowserAnimationsModule,
-    MatTooltipModule,
+    // MatTooltipModule,
     ImageComponent,
   ],
 })

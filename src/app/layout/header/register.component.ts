@@ -56,7 +56,7 @@ export class RegisterComponent extends PopupComponent<void> implements OnInit {
       userName: [null, [Validators.required]],
       password: [null, [Validators.required]],
       retypePassword: [null, [Validators.required]],
-      mobilePhone: [null, [Validators.required]],
+      phoneNumber: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
     });
   }
