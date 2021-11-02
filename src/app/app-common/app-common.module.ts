@@ -13,6 +13,7 @@ import { ImageComponent } from './image.component';
 import { ObjectKeysPipe } from './app-object.pipe';
 // import { MatTooltipModule } from '@angular/material/tooltip';
 import { TooltipDirective } from './tooltip.directive';
+import { SnackComponent } from './snack.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { TooltipDirective } from './tooltip.directive';
     LogoComponent,
     OverlayComponent,
     TooltipDirective,
+    SnackComponent,
     CommonValueAccessorDirective,
     TextboxComponent,
     ObjectKeysPipe,
@@ -38,6 +40,7 @@ import { TooltipDirective } from './tooltip.directive';
     LogoComponent,
     OverlayComponent,
     ReactiveFormsModule,
+    SnackComponent,
     FormsModule,
     ObjectKeysPipe,
     TooltipDirective,

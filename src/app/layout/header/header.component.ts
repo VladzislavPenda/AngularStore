@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 import { OverlayRootService } from 'src/app/app-core/overlay-root.service';
 import { User } from 'src/app/domain/user';
 import { logout } from 'src/app/state/auth/action';
+import { UserState } from 'src/app/state/auth/domain';
 import { authSelector } from 'src/app/state/auth/selectors';
 import { AppState } from 'src/app/state/domain';
 import { LoginComponent } from './login.component';
@@ -36,6 +37,7 @@ export class HeaderComponent implements OnInit {
       .subscribe((e) => {
         if (e != undefined) this.isAuthorised = true;
         this.user = e;
+        // this.cdr.detectChanges();
         // return e;
       });
   }

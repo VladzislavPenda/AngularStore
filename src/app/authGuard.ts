@@ -37,10 +37,11 @@ export class AuthGuard implements CanActivate {
         (e) => {
           if (e.token) return true;
 
-          this.snackService.showConfigured('success', {
-            dictionaryCode: true
-              ? 'UnblockCompanySuccess'
-              : 'BlockCompanySuccess',
+          this.snackService.showConfigured('failed', {
+            message: 'Login to get access to your Account',
+            // dictionaryCode: true
+            //   ? 'UnblockCompanySuccess'
+            //   : 'BlockCompanySuccess',
           });
           return false;
         }

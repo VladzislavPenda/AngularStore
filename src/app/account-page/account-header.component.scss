@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  height: 25rem;
+
+  > div {
+    // background-color: #fdb819;
+    // background-color: #f8c346;
+    transition: all 0.2s;
+    padding: 0.5rem 1rem;
+
+    .text {
+      // font-weight: 50;
+      font-size: 1rem;
+    }
+
+    > span {
+      color: rgb(134, 128, 128);
+    }
+
+    &:not(:last-child) {
+      border-bottom: lightgray solid 1px;
+    }
+  }
+
+  > div:hover {
+    > span {
+      color: rgb(70, 67, 67);
+    }
+
+    cursor: pointer;
+    background-color: #e4e1dc;
+  }
+}

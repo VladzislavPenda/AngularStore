@@ -1,0 +1,30 @@
+:host {
+  display: block;
+
+  header {
+    display: block;
+    height: 3rem;
+    background-color: #fdb819;
+    // text-align: end;
+
+    p {
+      text-align: end;
+      // margin-top: 1rem;
+      padding-top: 0.8rem;
+      padding-right: 2rem;
+    }
+  }
+
+  body {
+    display: flex;
+
+    > nav {
+      width: 20rem;
+      border-right: lightgray solid 1px;
+    }
+
+    > main {
+      width: 100%;
+    }
+  }
+}

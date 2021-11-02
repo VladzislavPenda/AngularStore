@@ -1,0 +1,12 @@
+<header>
+  <p class="text">Personal account</p>
+  {{ userContext | async }}
+</header>
+<body>
+  <nav>
+    <app-account-header></app-account-header>
+  </nav>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</body>

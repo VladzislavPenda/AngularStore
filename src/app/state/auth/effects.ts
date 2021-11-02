@@ -10,7 +10,8 @@ function getClaimsFromToken(token: string) {
   const user: User = {
     email: claims['email'],
     role: claims['permission'],
-    userName: claims['name'],
+    userName: claims['username'],
+    userId: claims['userId'],
   };
 
   return user;

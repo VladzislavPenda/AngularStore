@@ -1,0 +1,15 @@
+<section *ngIf="snack$ | async">
+  <div *ngFor="let snack of snack$ | async">
+    <div
+      [style.background-color]="snack.iconContainerColor"
+      class="snack-container"
+    >
+      <app-icon-fontawesome
+        [innerHtml]="snack.iconCode"
+        [style.color]="snack.iconColor"
+      >
+      </app-icon-fontawesome>
+      <p class="text">{{ snack.message }}</p>
+    </div>
+  </div>
+</section>

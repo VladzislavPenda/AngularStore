@@ -5,6 +5,7 @@ import { Lot } from '../catalog/cars/domain';
 import { FilterDto } from './dto/filterDto';
 import { LoginDto } from './dto/loginDto';
 import { RegisterUserDto } from './dto/registerUserDto';
+import { UserDto } from './dto/userDto';
 
 @Injectable()
 export class BackendService {
@@ -46,6 +47,11 @@ export class BackendService {
     register$: (registerInfo: RegisterUserDto) => {
       const url = makeApiUrl('authentication');
       return this.http.post(url, registerInfo);
+    },
+
+    getUserInfo$: (userId: string) => {
+      const url = makeApiUrl(`authentication/${userId}`);
+      return this.http.get<UserDto>(url);
     },
   };
 }

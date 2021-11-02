@@ -8,9 +8,11 @@ import {
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import jwtDecode from 'jwt-decode';
+import { map } from 'rxjs/operators';
 import { PopupComponent } from 'src/app/app-common/popup.component';
 import { User } from 'src/app/domain/user';
 import { setToken } from 'src/app/state/auth/action';
+import { authSelector } from 'src/app/state/auth/selectors';
 import { AppState } from 'src/app/state/domain';
 import { AuthService } from './auth.service';
 
@@ -53,13 +55,18 @@ export class LoginComponent extends PopupComponent<void> implements OnInit {
             email: claims['email'],
             role: claims['permission'],
             userName: claims['username'],
+            userId: claims['userId'],
           };
 
           localStorage.setItem('token', token);
           this.store$.dispatch(setToken({ token, user }));
-          this.zone.run(() => {
-            this.close();
-          });
+
+          // this.store$.select(authSelector).pipe(
+          //   map((e) => {
+          //     console.log(e);
+          //   })
+          // );
+          this.close();
         },
         (err) => {
           console.log(err);

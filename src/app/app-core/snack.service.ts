@@ -42,7 +42,7 @@ const PREPARED_CONFIGURATIONS = new Map<ConfiguredSnackConfig, SnackViewConfig>(
         iconCode: '&#xf05e',
         iconColor: '#e95b5b',
         iconCircleColor: '#ffffff',
-        iconContainerColor: '#f6e7e7',
+        iconContainerColor: '#e6cccc',
       },
     ],
     [
@@ -59,7 +59,7 @@ const PREPARED_CONFIGURATIONS = new Map<ConfiguredSnackConfig, SnackViewConfig>(
 
 @Injectable({ providedIn: 'root' })
 export class SnackService {
-  public snack$$ = new Subject<SnackConfig>();
+  private snack$$ = new Subject<SnackConfig>();
 
   public constructor() {}
 
@@ -84,5 +84,9 @@ export class SnackService {
       message,
       delay: config.delay,
     });
+  }
+
+  public get snack$() {
+    return this.snack$$.asObservable();
   }
 }
