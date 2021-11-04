@@ -1,26 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { UserDto } from '../backend/dto/userDto';
+import { UserState } from '../state/auth/domain';
+import { authSelector } from '../state/auth/selectors';
+import { AppState } from '../state/domain';
 import { AccountInfoService } from './account-info.service';
 
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss'],
-  providers: [AccountInfoService],
 })
 export class AccountComponent implements OnInit {
-  public userContext: Observable<UserDto>;
-
+  public userState: UserState;
   constructor(
     private readonly route: ActivatedRoute,
-    private accountInfoService: AccountInfoService
-  ) {
-    // this.userContext = this.route.snapshot.data.userData;
-  }
+    private readonly store: Store<AppState>
+  ) {}
 
   ngOnInit() {
-    this.userContext = this.accountInfoService.getUserInfo();
+    this.store.select(authSelector).subscribe((e) => (this.userState = e));
   }
 }

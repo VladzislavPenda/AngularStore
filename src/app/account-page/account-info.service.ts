@@ -13,6 +13,7 @@ export class AccountInfoService {
   ) {}
 
   public getUserInfo() {
+    console.log(1);
     return this.store.select(authSelector).pipe(
       map((userState) => userState.user.userId),
       first(),

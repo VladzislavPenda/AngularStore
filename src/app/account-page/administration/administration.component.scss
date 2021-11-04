@@ -1,0 +1,42 @@
+:host {
+  display: block;
+  // background-color: #e4eaf4;
+  height: 35rem;
+
+  .text {
+    color: rgb(134, 128, 128);
+  }
+  header {
+    ul {
+      display: flex;
+      list-style: none;
+      width: fit-content;
+      margin: 0;
+      padding: 0;
+      background-color: #e4eaf4;
+
+      li {
+        padding: 0.5rem 1rem;
+        background-color: rgb(255, 254, 254);
+        &:not(:last-child) {
+          border-right: 1px #b2b8c4 solid;
+        }
+
+        &:hover {
+          cursor: pointer;
+          // background-color: #e4eaf4;
+        }
+
+        &.active {
+          // background-color: #e4eaf4;
+
+          background-color: #f0f2f7;
+        }
+      }
+    }
+  }
+
+  section {
+    background-color: #f0f2f7;
+  }
+}

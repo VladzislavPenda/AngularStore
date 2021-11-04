@@ -11,18 +11,12 @@ import { IconFontAwesomeSolidComponent } from './icon-font-awesome.component';
 import { ImageViewDirective } from './image-view.directive';
 import { ImageComponent } from './image.component';
 import { ObjectKeysPipe } from './app-object.pipe';
-// import { MatTooltipModule } from '@angular/material/tooltip';
 import { TooltipDirective } from './tooltip.directive';
 import { SnackComponent } from './snack.component';
+import { ConfirmIconComponent } from './confirm-icon.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
-    // MatTooltipModule,
-    // BrowserAnimationsModule,
-  ],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
   declarations: [
     AppCommonComponent,
     LogoComponent,
@@ -34,6 +28,7 @@ import { SnackComponent } from './snack.component';
     ObjectKeysPipe,
     IconFontAwesomeSolidComponent,
     ImageViewDirective,
+    ConfirmIconComponent,
     ImageComponent,
   ],
   exports: [
@@ -48,8 +43,7 @@ import { SnackComponent } from './snack.component';
     TextboxComponent,
     IconFontAwesomeSolidComponent,
     ImageViewDirective,
-    // BrowserAnimationsModule,
-    // MatTooltipModule,
+    ConfirmIconComponent,
     ImageComponent,
   ],
 })

@@ -1,10 +1,9 @@
 <header>
   <p class="text">Personal account</p>
-  {{ userContext | async }}
 </header>
 <body>
   <nav>
-    <app-account-header></app-account-header>
+    <app-account-header [userState]="userState"></app-account-header>
   </nav>
   <main>
     <router-outlet></router-outlet>

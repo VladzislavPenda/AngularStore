@@ -7,3 +7,6 @@
 <div routerLink="orders">
   <span class="text">Order history</span>
 </div>
+<div routerLink="administration" *ngIf="role === 'Administrator'">
+  <span class="text">Administration</span>
+</div>

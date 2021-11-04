@@ -1,0 +1,22 @@
+<header>
+  <ul class="text">
+    <li
+      [class.active]="selectedPage === 'statistic'"
+      (click)="selectedPage = 'statistic'"
+    >
+      Statistic
+    </li>
+    <li
+      [class.active]="selectedPage === 'storageManagement'"
+      (click)="selectedPage = 'storageManagement'"
+    >
+      Storage management
+    </li>
+    <li>In develop</li>
+  </ul>
+</header>
+<section [ngSwitch]="selectedPage">
+  <app-storage-management *ngSwitchCase="'storageManagement'">
+  </app-storage-management>
+  <app-store-statistic *ngSwitchCase="'statistic'"></app-store-statistic>
+</section>

@@ -1,1 +1,37 @@
-<p>account-info works!</p>
+<header>
+  <span class="text">Personal data</span>
+</header>
+<section>
+  <div class="data-container text" *ngIf="userContext | async as user">
+    <div class="row">
+      <span><strong>First name:</strong> {{ user.firstName }}</span>
+    </div>
+    <div class="row">
+      <span><strong>Last name:</strong> {{ user.lastName }}</span>
+    </div>
+    <div class="row">
+      <span><strong>Phone number:</strong> {{ user.phoneNumber }}</span>
+    </div>
+    <div class="row">
+      <span><strong>Email:</strong> {{ user.email }}</span>
+    </div>
+    <div class="row">
+      <span
+        ><strong>Email confirmed:&nbsp;</strong>
+        <app-confirm-icon [value]="user.emailConfirmed"></app-confirm-icon
+      ></span>
+    </div>
+    <div class="row">
+      <span
+        ><strong>Phone number confirmed:&nbsp;</strong>
+        <app-confirm-icon [value]="user.phoneNumberConfirmed"></app-confirm-icon
+      ></span>
+    </div>
+    <div class="row">
+      <span
+        ><strong>Two factor enabled:&nbsp;</strong>
+        <app-confirm-icon [value]="user.twoFactorEnabled"></app-confirm-icon
+      ></span>
+    </div>
+  </div>
+</section>

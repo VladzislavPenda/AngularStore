@@ -4,6 +4,7 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
 import { OverlayRootService } from 'src/app/app-core/overlay-root.service';
@@ -25,6 +26,7 @@ export class HeaderComponent implements OnInit {
   public isAuthorised: boolean;
   public user: User;
   constructor(
+    private router: Router,
     private overlay: OverlayRootService,
     private store$: Store<AppState>,
     private cdr: ChangeDetectorRef
@@ -37,8 +39,6 @@ export class HeaderComponent implements OnInit {
       .subscribe((e) => {
         if (e != undefined) this.isAuthorised = true;
         this.user = e;
-        // this.cdr.detectChanges();
-        // return e;
       });
   }
 
@@ -64,5 +64,6 @@ export class HeaderComponent implements OnInit {
   public logout() {
     this.store$.dispatch(logout());
     this.isAuthorised = false;
+    this.router.navigateByUrl('');
   }
 }

@@ -6,7 +6,9 @@ import { AccountComponent } from './account.component';
 import { AccountHeaderComponent } from './account-header.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { BusketComponent } from './busket/busket.component';
-import { AccountResolver } from './accountResolver';
+import { AppCommonModule } from '../app-common/app-common.module';
+import { AdministrationGuard } from './administrationGuard';
+import { AdministrationComponent } from './administration/administration.component';
 
 const routes: Routes = [
   {
@@ -26,12 +28,25 @@ const routes: Routes = [
         path: 'busket',
         component: BusketComponent,
       },
+      {
+        path: 'administration',
+        canActivate: [AdministrationGuard],
+        loadChildren: () =>
+          import('./administration/administration.module').then(
+            (e) => e.AdministrationModule
+          ),
+      },
     ],
   },
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes), RouterModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    RouterModule,
+    AppCommonModule,
+  ],
   declarations: [
     AccountInfoComponent,
     AccountComponent,
@@ -39,6 +54,6 @@ const routes: Routes = [
     OrderHistoryComponent,
     BusketComponent,
   ],
-  // providers: [AccountResolver],
+  providers: [AdministrationGuard],
 })
 export class AccountModule {}

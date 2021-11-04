@@ -21,7 +21,6 @@ export class SnackComponent implements OnInit {
         map(([snack, snacks]) => {
           if (!snacks) snacks = new Set();
           snacks.add(snack);
-          console.log(snack);
           setTimeout(() => {
             this.hide();
           }, 5000);
