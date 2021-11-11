@@ -14,6 +14,7 @@ import { ObjectKeysPipe } from './app-object.pipe';
 import { TooltipDirective } from './tooltip.directive';
 import { SnackComponent } from './snack.component';
 import { ConfirmIconComponent } from './confirm-icon.component';
+import { ChartCustomComponent } from './chart-custom.component';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
@@ -30,6 +31,7 @@ import { ConfirmIconComponent } from './confirm-icon.component';
     ImageViewDirective,
     ConfirmIconComponent,
     ImageComponent,
+    ChartCustomComponent,
   ],
   exports: [
     LogoComponent,
@@ -45,6 +47,7 @@ import { ConfirmIconComponent } from './confirm-icon.component';
     ImageViewDirective,
     ConfirmIconComponent,
     ImageComponent,
+    ChartCustomComponent,
   ],
 })
 export class AppCommonModule {}

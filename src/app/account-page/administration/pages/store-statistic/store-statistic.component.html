@@ -1,2 +1,11 @@
-<header>store-statistic works!</header>
-<section>some statistic</section>
+<header></header>
+<section *ngIf="stats$ | async as stats">
+  <div class="diagrams-container">
+    <div *ngFor="let stat of getAvailableStats(stats)">
+      <app-chart-custom
+        [chartLabel]="stat"
+        [dataSet]="stats[stat]"
+      ></app-chart-custom>
+    </div>
+  </div>
+</section>

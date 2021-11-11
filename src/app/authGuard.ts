@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, UrlTree } from '@angular/router';
+import { CanActivate, Router, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,6 +11,7 @@ import { AppState } from './state/domain';
 export class AuthGuard implements CanActivate {
   public constructor(
     private store$: Store<AppState>,
+    private router: Router,
     private snackService: SnackService
   ) {}
 
@@ -21,11 +22,14 @@ export class AuthGuard implements CanActivate {
     | UrlTree {
     return this.store$.select(authSelector).pipe(
       map((e) => {
+        console.log(1);
         if (e.token) return true;
 
         this.snackService.showConfigured('failed', {
           message: 'Login to get access to your Account',
         });
+
+        this.router.navigateByUrl('/');
         return false;
       })
     );

@@ -6,6 +6,7 @@ import { FilterDto } from './dto/filterDto';
 import { LoginDto } from './dto/loginDto';
 import { RegisterUserDto } from './dto/registerUserDto';
 import { UserDto } from './dto/userDto';
+import { StorageStatistic } from './dto/statisticDto';
 
 @Injectable()
 export class BackendService {
@@ -52,6 +53,13 @@ export class BackendService {
     getUserInfo$: (userId: string) => {
       const url = makeApiUrl(`authentication/${userId}`);
       return this.http.get<UserDto>(url);
+    },
+  };
+
+  public statistic = {
+    storageStatistic$: () => {
+      const url = makeApiUrl(`statistic/storage`);
+      return this.http.get<StorageStatistic>(url);
     },
   };
 }
