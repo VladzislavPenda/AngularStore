@@ -12,6 +12,12 @@
     >
       Storage management
     </li>
+    <li
+      [class.active]="selectedPage === 'ordersManagement'"
+      (click)="selectedPage = 'ordersManagement'"
+    >
+      Orders management
+    </li>
     <li>In develop</li>
   </ul>
 </header>
@@ -19,4 +25,7 @@
   <app-storage-management *ngSwitchCase="'storageManagement'">
   </app-storage-management>
   <app-store-statistic *ngSwitchCase="'statistic'"></app-store-statistic>
+  <app-orders-management
+    *ngSwitchCase="'ordersManagement'"
+  ></app-orders-management>
 </section>

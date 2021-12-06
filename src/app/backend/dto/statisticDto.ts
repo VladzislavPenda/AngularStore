@@ -1,4 +1,6 @@
 export interface StorageStatistic {
+  ordersCount: number;
+  totalIncome: number;
   stats: Stats;
 }
 

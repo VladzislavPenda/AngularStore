@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { makeApiUrl } from '../app-common/app-common';
 import { HttpClient } from '@angular/common/http';
-import { Lot } from '../catalog/cars/domain';
-import { FilterDto } from './dto/filterDto';
-import { LoginDto } from './dto/loginDto';
+import {
+  CarListFilter,
+  LotShort,
+  mapCarFilterToParams,
+} from '../catalog/cars/domain';
 import { RegisterUserDto } from './dto/registerUserDto';
 import { UserDto } from './dto/userDto';
 import { StorageStatistic } from './dto/statisticDto';
+import { LotDto } from './dto/lotDto';
+import { OrderDto } from './dto/orderDto';
+import { StorageDto } from './dto/storageDto';
 
 @Injectable()
 export class BackendService {
@@ -15,13 +20,18 @@ export class BackendService {
   public shop = {
     getModelById$: (id: string) => {
       const url = makeApiUrl(`shopModels/${id}`);
-      return this.http.get(url);
+      return this.http.get<LotDto>(url);
     },
 
-    getPagedModels$: (filterDto?: FilterDto) => {
-      const queryParams = toQueryParams(filterDto);
+    getPagedModels$: (filter: CarListFilter) => {
+      // const queryParams = toQueryParams(filterDto);
       const url = makeApiUrl(`shopModels`);
-      return this.http.get<Lot[]>(url);
+      const params = mapCarFilterToParams(filter);
+      return this.http.get<LotShort[]>(url, {
+        params,
+        observe: 'response',
+        withCredentials: true,
+      });
     },
 
     get2$: (id: string) => {
@@ -57,9 +67,27 @@ export class BackendService {
   };
 
   public statistic = {
-    storageStatistic$: () => {
+    getStorageStatistic$: () => {
       const url = makeApiUrl(`statistic/storage`);
       return this.http.get<StorageStatistic>(url);
+    },
+  };
+
+  public storages = {
+    getStorages$: () => {
+      const url = makeApiUrl(`storage`);
+      return this.http.get<StorageDto[]>(url);
+    },
+  };
+
+  public orders = {
+    getAllOrders$: () => {
+      const url = makeApiUrl('order');
+      const params = {
+        pageNumber: 1,
+        pageSize: 100,
+      };
+      return this.http.get<OrderDto[]>(url, { params });
     },
   };
 }

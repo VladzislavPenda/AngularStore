@@ -11,7 +11,7 @@ export class AdministrationService {
 
   public getStoreStatistic() {
     return this.backendService.statistic
-      .storageStatistic$()
+      .getStorageStatistic$()
       .pipe(map((e) => e.stats));
   }
 }

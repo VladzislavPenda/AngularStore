@@ -1,0 +1,22 @@
+<ng-container *ngIf="lot$ | async as lot">
+  <header>
+    <h2>
+      <app-icon-fontawesome (click)="goBack()">&#xf053;</app-icon-fontawesome>
+      {{ lot.model }}
+    </h2>
+  </header>
+  <section>
+    <app-image class="image-main" imageId="{{ lot.photos[0] }}"></app-image>
+    <div class="label text"><strong>Описание</strong></div>
+    <table class="app-table">
+      <!-- <tr>
+        <th>Характеристика</th>
+        <th>Значение</th>
+      </tr> -->
+      <tr class="text" *ngFor="let entity of lot.characteristics">
+        <td>{{ entity.name }}</td>
+        <td>{{ entity.value }}</td>
+      </tr>
+    </table>
+  </section>
+</ng-container>

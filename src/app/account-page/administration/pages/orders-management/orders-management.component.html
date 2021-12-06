@@ -1,0 +1,14 @@
+<ng-container *ngIf="ordersList | async as list">
+  <div *ngFor="let item of list" class="order">
+    <div class="text">
+      <span>{{ item.shopModel.model }}</span>
+      <br />
+      <span>Buyer email: {{ item.userEmail }}</span>
+      <br />
+      <span>Date: {{ item.orderDateTime }}</span>
+    </div>
+    <div>
+      <span>{{ item.shopModel.price }} USD</span>
+    </div>
+  </div>
+</ng-container>

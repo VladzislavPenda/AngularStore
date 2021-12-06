@@ -1,2 +1,11 @@
-<header>storage-management works!</header>
-<section>someData</section>
+<section>
+  <ng-container *ngIf="storageList$ | async as storages">
+    <div class="storage text" *ngFor="let storage of storages">
+      <span>{{ storage.address }}</span
+      ><br />
+      <span>Working time: {{ storage.openTime }} - {{ storage.closeTime }}</span
+      ><br />
+      <span>Number of cars: {{ storage.numberOfCars }}</span>
+    </div>
+  </ng-container>
+</section>

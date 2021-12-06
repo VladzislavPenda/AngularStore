@@ -104,3 +104,29 @@
 .ng-tooltip-show {
   opacity: 1;
 }
+
+.app-table {
+  width: var(--table-width, 100%);
+  border-spacing: 0;
+  table-layout: fixed;
+
+  tr {
+    display: block;
+    background-color: rgb(250, 250, 250);
+    // padding: 1rem;
+    border-bottom: 2px solid #eee;
+
+    td {
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  th {
+    padding: 0.5rem 0;
+    background-color: #af84208e;
+  }
+
+  tr:hover td {
+    background-color: #f3f3f3;
+  }
+}

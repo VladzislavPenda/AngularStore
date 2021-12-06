@@ -1,7 +1,8 @@
+import { ThisReceiver } from '@angular/compiler';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BackendService } from 'src/app/backend/backend.service';
-import { Lot } from './domain';
+import { CarCatalogService } from './car-catalog.service';
+import { CarListFilter, LotShort } from './domain';
 
 @Component({
   selector: 'app-car-catalog',
@@ -10,11 +11,17 @@ import { Lot } from './domain';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarCatalogComponent implements OnInit {
-  public items: Observable<Lot[]>;
+  public items: Observable<{ list: LotShort[]; pages: number }>;
+  public selectedPage: number;
+  public filter: CarListFilter;
 
-  constructor(private backendService: BackendService) {}
+  constructor(private carCatalogService: CarCatalogService) {}
 
   ngOnInit() {
-    this.items = this.backendService.shop.getPagedModels$();
+    this.getCatalogList();
+  }
+
+  public getCatalogList() {
+    this.items = this.carCatalogService.getCatalogList();
   }
 }

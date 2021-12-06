@@ -1,10 +1,14 @@
 <header></header>
-<section *ngIf="stats$ | async as stats">
+<section class="text" *ngIf="statistics$ | async as statistics">
+  <div>
+    <span>Total income: {{ statistics.totalIncome }}</span> <br />
+    <span>Number of sold cars: {{ statistics.ordersCount }}</span>
+  </div>
   <div class="diagrams-container">
-    <div *ngFor="let stat of getAvailableStats(stats)">
+    <div *ngFor="let stat of getAvailableStats(statistics.stats)">
       <app-chart-custom
         [chartLabel]="stat"
-        [dataSet]="stats[stat]"
+        [dataSet]="statistics.stats[stat]"
       ></app-chart-custom>
     </div>
   </div>

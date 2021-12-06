@@ -2,4 +2,5 @@
   <app-car-catalog-header></app-car-catalog-header>
 </div> -->
 <app-car-catalog-header></app-car-catalog-header>
-<app-car-catalog-list [items]="items"></app-car-catalog-list>
+<app-car-catalog-list [items]="items" (getCatalogList)="getCatalogList()">
+</app-car-catalog-list>

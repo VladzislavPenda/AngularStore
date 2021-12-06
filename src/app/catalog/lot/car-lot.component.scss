@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  background-color: white;
+
+  height: auto;
+
+  header {
+    // background-color: #f8db96;
+
+    h2 {
+      app-icon-fontawesome {
+        color: rgb(97, 94, 94);
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      padding: 1rem;
+      color: rgb(136, 131, 131);
+      border-bottom: grey 1px solid;
+    }
+  }
+
+  section {
+    padding: 1rem 2rem;
+
+    .image-main {
+      width: 40rem;
+      height: 25rem;
+    }
+
+    .label {
+      padding: 1rem;
+      font-size: 20px;
+    }
+  }
+}

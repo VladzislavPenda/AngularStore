@@ -8,7 +8,6 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
 import { BusketComponent } from './busket/busket.component';
 import { AppCommonModule } from '../app-common/app-common.module';
 import { AdministrationGuard } from './administrationGuard';
-import { AdministrationComponent } from './administration/administration.component';
 
 const routes: Routes = [
   {

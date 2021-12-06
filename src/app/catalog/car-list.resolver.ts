@@ -10,9 +10,9 @@ export class CarListResolver implements Resolve<any> {
     private fileService: FileService
   ) {}
   public resolve() {
-    return this.backendService.shop
-      .getPagedModels$()
-      .subscribe((e) => console.log(e));
+    // return this.backendService.shop
+    //   .getPagedModels$()
+    //   .subscribe((e) => console.log(e));
     // return this.backendService.shop.get2$('');
   }
 }

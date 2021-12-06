@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BackendService } from 'src/app/backend/backend.service';
 import { Stats, StorageStatistic } from 'src/app/backend/dto/statisticDto';
+import { StoreStatisticService } from './store-statistic.service';
 
 type Theme = 'light-theme' | 'dark-theme';
 
@@ -17,32 +18,27 @@ type Theme = 'light-theme' | 'dark-theme';
   templateUrl: './store-statistic.component.html',
   styleUrls: ['./store-statistic.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [StoreStatisticService],
 })
 export class StoreStatisticComponent implements OnInit {
   public stats$: Observable<Stats>;
+  public statistics$: Observable<StorageStatistic>;
   public ctx: any;
 
   constructor(
     private readonly elementRef: ElementRef,
-    private readonly backendService: BackendService
+    private readonly backendService: BackendService,
+    private readonly service: StoreStatisticService
   ) {}
 
   ngOnInit() {
     this.stats$ = this.backendService.statistic
-      .storageStatistic$()
+      .getStorageStatistic$()
       .pipe(map((e) => e.stats));
-    // .subscribe((e) => {
-    //   this.stats = e;
-    //   console.log(this.stats);
-    //   this.ctx = document.getElementById('myChart');
-    //   this.setTime(this.stats);
-    // });
+
+    this.statistics$ = this.service.getStats();
 
     Chart.register(...registerables);
-    // this.ctx = (this.elementRef.nativeElement as Element).getElementsByTagName(
-    //   'canvas'
-    // );
-    // this.ctx = document.getElementById('myChart2');
   }
 
   public getAvailableStats(stats: Stats) {

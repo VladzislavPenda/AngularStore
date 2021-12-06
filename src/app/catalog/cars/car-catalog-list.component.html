@@ -1,13 +1,25 @@
-<ng-container *ngIf="items != undefined">
+<ng-container *ngIf="items | async as items">
   <div class="product-list">
-    <ng-container *ngFor="let item of items | async">
-      <div class="product-card">
-        <app-image imageId="{{ item.photos[0] }}"></app-image>
-        <div class="short-product-info">
-          <p>{{ item.model }}</p>
-          <p>{{ item.price }}</p>
-        </div>
+    <div
+      (click)="openLot(item.id)"
+      class="product-card"
+      *ngFor="let item of items.list"
+    >
+      <app-image imageId="{{ item.photos[0] }}"></app-image>
+      <div class="short-product-info">
+        <p>{{ item.model }}</p>
+        <p>{{ item.price }}</p>
       </div>
-    </ng-container>
+    </div>
+  </div>
+  <div class="page-switcher-container">
+    <button
+      class="change-list-page"
+      [class.active]="idx + 1 === getSelectedPage()"
+      *ngFor="let in of getArray(items.pages); let idx = index"
+      (click)="selectPage(idx + 1)"
+    >
+      {{ idx + 1 }}
+    </button>
   </div>
 </ng-container>

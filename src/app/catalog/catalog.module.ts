@@ -6,6 +6,8 @@ import { CarCatalogHeaderComponent } from './cars/car-catalog-header.component';
 import { CarCatalogListComponent } from './cars/car-catalog-list.component';
 import { AppCommonModule } from '../app-common/app-common.module';
 import { CarListResolver } from './car-list.resolver';
+import { CarCatalogService } from './cars/car-catalog.service';
+import { CarLotComponent } from './lot/car-lot.component';
 
 const routes: Routes = [
   {
@@ -13,10 +15,10 @@ const routes: Routes = [
     // resolve: { data: CarListResolver },
     component: CarCatalogComponent,
   },
-  // {
-  //   path: '2',
-  //   component: CarCatalogListComponent,
-  // },
+  {
+    path: ':id',
+    component: CarLotComponent,
+  },
 ];
 
 @NgModule({
@@ -25,7 +27,8 @@ const routes: Routes = [
     CarCatalogComponent,
     CarCatalogHeaderComponent,
     CarCatalogListComponent,
+    CarLotComponent,
   ],
-  providers: [CarListResolver],
+  providers: [CarListResolver, CarCatalogService],
 })
 export class CatalogModule {}
