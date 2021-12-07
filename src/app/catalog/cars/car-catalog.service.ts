@@ -26,10 +26,4 @@ export class CarCatalogService {
       })
     );
   }
-
-  public loadLot(lotId: string) {
-    return this.backendService.shop
-      .getModelById$(lotId)
-      .pipe(map((e) => mapDtoToLot(e)));
-  }
 }

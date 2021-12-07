@@ -29,6 +29,6 @@ const routes: Routes = [
     CarCatalogListComponent,
     CarLotComponent,
   ],
-  providers: [CarListResolver, CarCatalogService],
+  providers: [CarListResolver],
 })
 export class CatalogModule {}

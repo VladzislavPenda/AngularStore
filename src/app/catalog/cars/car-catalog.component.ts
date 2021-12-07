@@ -9,6 +9,7 @@ import { CarListFilter, LotShort } from './domain';
   templateUrl: './car-catalog.component.html',
   styleUrls: ['./car-catalog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [CarCatalogService],
 })
 export class CarCatalogComponent implements OnInit {
   public items: Observable<{ list: LotShort[]; pages: number }>;
@@ -23,5 +24,14 @@ export class CarCatalogComponent implements OnInit {
 
   public getCatalogList() {
     this.items = this.carCatalogService.getCatalogList();
+  }
+
+  public getSelectedPage() {
+    return this.carCatalogService.filter.pageNumber;
+  }
+
+  public changePage(pageNumber: number) {
+    this.carCatalogService.filter.pageNumber = pageNumber;
+    this.getCatalogList();
   }
 }

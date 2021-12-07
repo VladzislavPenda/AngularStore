@@ -7,6 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { faThumbsDown } from '@fortawesome/free-regular-svg-icons';
 import { Observable } from 'rxjs';
 import { CarCatalogService } from './car-catalog.service';
 import { LotShort } from './domain';
@@ -19,19 +20,16 @@ import { LotShort } from './domain';
 })
 export class CarCatalogListComponent implements OnInit {
   @Input() public items: Observable<{ list: LotShort[]; pages: number }>;
+  @Input() public selectedPage: number;
   @Output() getCatalogList = new EventEmitter<void>();
+  @Output() changeSelectedPage = new EventEmitter<number>();
 
-  constructor(private carService: CarCatalogService, private router: Router) {}
+  constructor(private router: Router) {}
 
   public ngOnInit() {}
 
   public selectPage(pageNumber: number) {
-    this.carService.filter.pageNumber = pageNumber;
-    this.getCatalogList.emit();
-  }
-
-  public getSelectedPage() {
-    return this.carService.filter.pageNumber;
+    this.changeSelectedPage.emit(pageNumber);
   }
 
   public getArray(arrLength: number) {

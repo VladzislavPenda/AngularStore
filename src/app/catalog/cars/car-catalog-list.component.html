@@ -15,7 +15,7 @@
   <div class="page-switcher-container">
     <button
       class="change-list-page"
-      [class.active]="idx + 1 === getSelectedPage()"
+      [class.active]="idx + 1 === selectedPage"
       *ngFor="let in of getArray(items.pages); let idx = index"
       (click)="selectPage(idx + 1)"
     >

@@ -1,6 +1,7 @@
-<!-- <div>
-  <app-car-catalog-header></app-car-catalog-header>
-</div> -->
 <app-car-catalog-header></app-car-catalog-header>
-<app-car-catalog-list [items]="items" (getCatalogList)="getCatalogList()">
+<app-car-catalog-list
+  [items]="items"
+  (changeSelectedPage)="changePage($event)"
+  [selectedPage]="getSelectedPage()"
+>
 </app-car-catalog-list>
