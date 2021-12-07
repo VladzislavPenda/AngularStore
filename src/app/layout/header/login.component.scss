@@ -10,6 +10,7 @@
     padding: 1rem 1.5rem 0 1.5rem;
     text-align: left;
     border-bottom: #fdb819 1px solid;
+    --text-font-size: 20px;
 
     .close-icon {
       font-size: 1.3em;
@@ -21,10 +22,6 @@
         background-color: rgb(225, 228, 231);
         cursor: pointer;
       }
-    }
-
-    .text {
-      --text-font-size: 20px;
     }
   }
 

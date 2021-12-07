@@ -1,15 +1,19 @@
 <header></header>
-<section class="text" *ngIf="statistics$ | async as statistics">
-  <div>
+<section *ngIf="statistics$ | async as statistics">
+  <div class="common">
+    <h3>Common information</h3>
     <span>Total income: {{ statistics.totalIncome }}</span> <br />
     <span>Number of sold cars: {{ statistics.ordersCount }}</span>
   </div>
-  <div class="diagrams-container">
-    <div *ngFor="let stat of getAvailableStats(statistics.stats)">
-      <app-chart-custom
-        [chartLabel]="stat"
-        [dataSet]="statistics.stats[stat]"
-      ></app-chart-custom>
+  <div>
+    <h3>Car statistics</h3>
+    <div class="diagrams-container">
+      <div *ngFor="let stat of getAvailableStats(statistics.stats)">
+        <app-chart-custom
+          [chartLabel]="stat"
+          [dataSet]="statistics.stats[stat]"
+        ></app-chart-custom>
+      </div>
     </div>
   </div>
 </section>

@@ -4,6 +4,7 @@
   right: 2rem;
   z-index: 3;
   display: block;
+  font-size: 1rem;
 
   section {
     animation: fade-in 0.5s;
@@ -21,10 +22,6 @@
     padding: 0.5rem 1rem;
     display: flex;
     justify-content: space-around;
-  }
-
-  .text {
-    font-size: 1rem;
   }
 
   p {

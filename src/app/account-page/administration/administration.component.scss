@@ -1,11 +1,6 @@
 :host {
   display: block;
-  // background-color: #e4eaf4;
-  // height: 35rem;
 
-  .text {
-    color: rgb(134, 128, 128);
-  }
   header {
     ul {
       display: flex;
@@ -18,6 +13,7 @@
       li {
         padding: 0.5rem 1rem;
         background-color: rgb(255, 254, 254);
+        color: rgb(134, 128, 128);
         &:not(:last-child) {
           border-right: 1px #b2b8c4 solid;
         }

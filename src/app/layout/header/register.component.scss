@@ -11,10 +11,7 @@
     margin-bottom: 1rem;
     text-align: left;
     border-bottom: #fdb819 1px solid;
-
-    .text {
-      --text-font-size: 20px;
-    }
+    --text-font-size: 20px;
 
     .close-icon {
       font-size: 1.3em;
@@ -32,7 +29,6 @@
   dl {
     width: 60%;
     margin: auto;
-    // text-align: center;
   }
 
   dd {

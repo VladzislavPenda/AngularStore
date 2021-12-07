@@ -13,7 +13,7 @@
         <th>Характеристика</th>
         <th>Значение</th>
       </tr> -->
-      <tr class="text" *ngFor="let entity of lot.characteristics">
+      <tr *ngFor="let entity of lot.characteristics">
         <td>{{ entity.name }}</td>
         <td>{{ entity.value }}</td>
       </tr>
