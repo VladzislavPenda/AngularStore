@@ -18,7 +18,12 @@
     >
       Orders management
     </li>
-    <li>In develop</li>
+    <li
+      [class.active]="selectedPage === 'carManagement'"
+      (click)="selectedPage = 'carManagement'"
+    >
+      Car management
+    </li>
   </ul>
 </header>
 <section [ngSwitch]="selectedPage">
@@ -28,4 +33,5 @@
   <app-orders-management
     *ngSwitchCase="'ordersManagement'"
   ></app-orders-management>
+  <app-car-management *ngSwitchCase="'carManagement'"></app-car-management>
 </section>

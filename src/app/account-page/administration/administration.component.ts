@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./administration.component.scss'],
 })
 export class AdministrationComponent implements OnInit {
-  public selectedPage: 'statistic' | 'storageManagement' | 'ordersManagement' =
-    'statistic';
+  public selectedPage:
+    | 'statistic'
+    | 'storageManagement'
+    | 'ordersManagement'
+    | 'carManagement' = 'statistic';
   constructor() {}
 
   ngOnInit() {}

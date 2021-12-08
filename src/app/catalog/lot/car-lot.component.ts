@@ -16,14 +16,14 @@ export class CarLotComponent implements OnInit {
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly carCatalogService: CarLotService
+    private readonly service: CarLotService
   ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe((e) => {
       const id = e.get('id');
-      this.lot$ = this.carCatalogService.loadLot(id);
-      this.carCatalogService.loadLot(id).subscribe((e) => console.log(e));
+      this.lot$ = this.service.loadLot(id);
+      this.service.loadLot(id).subscribe((e) => console.log(e));
     });
   }
 

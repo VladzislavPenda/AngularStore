@@ -1,6 +1,7 @@
 import { ThisReceiver } from '@angular/compiler';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Lot } from '../lot/domain';
 import { CarCatalogService } from './car-catalog.service';
 import { CarListFilter, LotShort } from './domain';
 
@@ -12,7 +13,7 @@ import { CarListFilter, LotShort } from './domain';
   providers: [CarCatalogService],
 })
 export class CarCatalogComponent implements OnInit {
-  public items: Observable<{ list: LotShort[]; pages: number }>;
+  public items: Observable<{ list: Lot[]; pages: number }>;
   public selectedPage: number;
   public filter: CarListFilter;
 

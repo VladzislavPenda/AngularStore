@@ -9,6 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { faThumbsDown } from '@fortawesome/free-regular-svg-icons';
 import { Observable } from 'rxjs';
+import { Lot } from '../lot/domain';
 import { CarCatalogService } from './car-catalog.service';
 import { LotShort } from './domain';
 
@@ -19,7 +20,7 @@ import { LotShort } from './domain';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarCatalogListComponent implements OnInit {
-  @Input() public items: Observable<{ list: LotShort[]; pages: number }>;
+  @Input() public items: Observable<{ list: Lot[]; pages: number }>;
   @Input() public selectedPage: number;
   @Output() getCatalogList = new EventEmitter<void>();
   @Output() changeSelectedPage = new EventEmitter<number>();

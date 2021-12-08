@@ -8,6 +8,7 @@ import { StoreStatisticComponent } from './pages/store-statistic/store-statistic
 // import { ChartModule } from 'angular2-chartjs';
 import { NgChartsModule } from 'ng2-charts';
 import { OrdersManagementComponent } from './pages/orders-management/orders-management.component';
+import { CarManagementComponent } from './pages/car-management/car-management.component';
 
 // import { ChartsModule } from 'ng2-charts';
 
@@ -30,6 +31,7 @@ const routes: Routes = [
     StorageManagementComponent,
     StoreStatisticComponent,
     OrdersManagementComponent,
+    CarManagementComponent,
   ],
 })
 export class AdministrationModule {}

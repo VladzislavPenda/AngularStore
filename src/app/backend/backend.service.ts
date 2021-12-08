@@ -12,6 +12,7 @@ import { StorageStatistic } from './dto/statisticDto';
 import { LotDto } from './dto/lotDto';
 import { OrderDto } from './dto/orderDto';
 import { StorageDto } from './dto/storageDto';
+import { Lot } from '../catalog/lot/domain';
 
 @Injectable()
 export class BackendService {
@@ -27,7 +28,7 @@ export class BackendService {
       // const queryParams = toQueryParams(filterDto);
       const url = makeApiUrl(`shopModels`);
       const params = mapCarFilterToParams(filter);
-      return this.http.get<LotShort[]>(url, {
+      return this.http.get<Lot[]>(url, {
         params,
         observe: 'response',
         withCredentials: true,
