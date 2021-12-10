@@ -1,24 +1,30 @@
-<div>s</div>
-<script>
-  let i = 0;
-
-  function count() {
-    // сделать часть крупной задачи (*)
-    do {
-      i++;
-      progress.innerHTML = i;
-    } while (i % 1e3 != 0);
-
-    if (i < 1e7) {
-      setTimeout(count);
-    }
-  }
-
-  count();
-</script>
+<header>
+  <button class="app-button" (click)="createLot()">Add new</button>
+</header>
 <ng-container *ngIf="items$ | async as items">
-  <div class="car-lot" *ngFor="let item of items.list">
-    {{ item.model }} - {{ item.price }} USD <br />
-    <span>More info...</span>
+  <div
+    class="car-lot"
+    *ngFor="let item of items.list"
+    #expandElem="appExpandItem"
+    appExpand
+    [expandTemplate]="detailizedCarInfo"
+    [expandContext]="item"
+  >
+    <span>
+      <strong>{{ item.model }}</strong> - {{ item.price }} USD <br />
+    </span>
+    <app-expand-icon [isExpanded]="expandElem.isExpanded()"></app-expand-icon>
   </div>
+  <ng-template #detailizedCarInfo let-model>
+    <div class="car-lot-expandable">
+      <strong>Characteristics:</strong><br />
+      <span>Year of market entry: {{ model.year }}</span> <br />
+      <span>Horse power: {{ model.horsePower }}</span> <br />
+      <span *ngFor="let item of model.characteristics">
+        {{ item.name }}: {{ item.value }} <br />
+      </span>
+      <button class="app-button" (click)="deleteLot()">Delete</button>
+      <button class="app-button" (click)="editLot()">Edit</button>
+    </div>
+  </ng-template>
 </ng-container>

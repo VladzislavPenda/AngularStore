@@ -9,6 +9,8 @@ import { StoreStatisticComponent } from './pages/store-statistic/store-statistic
 import { NgChartsModule } from 'ng2-charts';
 import { OrdersManagementComponent } from './pages/orders-management/orders-management.component';
 import { CarManagementComponent } from './pages/car-management/car-management.component';
+import { CreateLotComponent } from './pages/car-management/car-management-popups/create-lot.component';
+import { EditLotComponent } from './pages/car-management/car-management-popups/edit-lot.component';
 
 // import { ChartsModule } from 'ng2-charts';
 
@@ -32,6 +34,8 @@ const routes: Routes = [
     StoreStatisticComponent,
     OrdersManagementComponent,
     CarManagementComponent,
+    CreateLotComponent,
+    EditLotComponent,
   ],
 })
 export class AdministrationModule {}

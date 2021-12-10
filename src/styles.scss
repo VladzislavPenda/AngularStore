@@ -24,12 +24,35 @@ body {
   }
 }
 
+.app-label {
+  display: block;
+  color: #9eadb6;
+}
+
+.app-select {
+  display: block;
+  height: 30px;
+  border: 1px solid #dbdbdb;
+  width: 14rem;
+  color: #9eadb6;
+  padding-left: 0.5rem;
+
+  &:focus {
+    outline: none;
+  }
+}
+
 .app-button {
   background-color: #fdb819;
   border: none;
   font-size: 16px;
   color: black;
   text-align: center;
+  padding: 0.5rem 1rem;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .error-message {

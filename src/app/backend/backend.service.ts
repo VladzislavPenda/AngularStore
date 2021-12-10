@@ -13,6 +13,7 @@ import { LotDto } from './dto/lotDto';
 import { OrderDto } from './dto/orderDto';
 import { StorageDto } from './dto/storageDto';
 import { Lot } from '../catalog/lot/domain';
+import { EntDto } from './dto/entDto';
 
 @Injectable()
 export class BackendService {
@@ -35,11 +36,22 @@ export class BackendService {
       });
     },
 
-    get2$: (id: string) => {
-      const url = makeApiUrl(`shopModels/${id}`);
-      return this.http.get(
-        'https://localhost:5001/api/ShopModels/b5565f87-88ab-4cd8-aa34-0595edaa8614'
-      );
+    post$: (lot: Lot) => {
+      // const url = makeApiUrl()
+    },
+
+    // get2$: (id: string) => {
+    //   const url = makeApiUrl(`shopModels/${id}`);
+    //   return this.http.get(
+    //     'https://localhost:5001/api/ShopModels/b5565f87-88ab-4cd8-aa34-0595edaa8614'
+    //   );
+    // },
+  };
+
+  public ent = {
+    getEntsList: () => {
+      const url = makeApiUrl(`ent`);
+      return this.http.get<EntDto>(url);
     },
   };
 

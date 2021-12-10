@@ -15,6 +15,8 @@ import { TooltipDirective } from './tooltip.directive';
 import { SnackComponent } from './snack.component';
 import { ConfirmIconComponent } from './confirm-icon.component';
 import { ChartCustomComponent } from './chart-custom.component';
+import { ExpandDirective } from './expand.directive';
+import { ExpandIconComponent } from './expand-icon.component';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
@@ -32,6 +34,8 @@ import { ChartCustomComponent } from './chart-custom.component';
     ConfirmIconComponent,
     ImageComponent,
     ChartCustomComponent,
+    ExpandDirective,
+    ExpandIconComponent,
   ],
   exports: [
     LogoComponent,
@@ -48,6 +52,8 @@ import { ChartCustomComponent } from './chart-custom.component';
     ConfirmIconComponent,
     ImageComponent,
     ChartCustomComponent,
+    ExpandDirective,
+    ExpandIconComponent,
   ],
 })
 export class AppCommonModule {}
