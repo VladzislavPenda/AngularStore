@@ -1,11 +1,12 @@
 :host {
   display: block;
-  background-color: white;
-
+  background-color: rgb(252, 252, 252);
+  width: 80%;
+  margin: auto;
   height: auto;
 
   header {
-    // background-color: #f8db96;
+    background-color: #f8db96;
 
     h2 {
       app-icon-fontawesome {
@@ -25,6 +26,22 @@
   section {
     padding: 1rem 2rem;
 
+    > div {
+      display: flex;
+
+      .common-info {
+        padding: 1rem;
+
+        li span {
+          color: grey;
+        }
+
+        .app-button {
+          margin: 0 0.5rem;
+        }
+      }
+    }
+
     .image-main {
       width: 40rem;
       height: 25rem;
@@ -33,6 +50,10 @@
     .label {
       padding: 1rem;
       font-size: 20px;
+    }
+
+    .app-table {
+      width: 50%;
     }
   }
 }

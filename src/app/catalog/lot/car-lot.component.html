@@ -6,13 +6,27 @@
     </h2>
   </header>
   <section>
-    <app-image class="image-main" imageId="{{ lot.photos[0] }}"></app-image>
-    <div class="label text"><strong>Описание</strong></div>
+    <div>
+      <app-image class="image-main" imageId="{{ lot.photos[0] }}"></app-image>
+      <div class="common-info">
+        <ul>
+          <li>
+            Price: <span>{{ lot.price }} USD</span>
+          </li>
+          <li>
+            Horse power: <span>{{ lot.horsePower }}</span>
+          </li>
+          <li>
+            Year: <span>{{ lot.year }}</span>
+          </li>
+        </ul>
+        <button class="app-button">To cart</button>
+        <button class="app-button">To favourite</button>
+      </div>
+    </div>
+
+    <div class="label text"><strong>Lot description</strong></div>
     <table class="app-table">
-      <!-- <tr>
-        <th>Характеристика</th>
-        <th>Значение</th>
-      </tr> -->
       <tr *ngFor="let entity of lot.characteristics">
         <td>{{ entity.name }}</td>
         <td>{{ entity.value }}</td>
