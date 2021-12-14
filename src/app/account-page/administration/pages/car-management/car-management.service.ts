@@ -23,5 +23,7 @@ export class CarManagementService {
     );
   }
 
-  public post() {}
+  public deleteLot(lotId: string) {
+    return this.backendService.shop.delete$(lotId);
+  }
 }

@@ -11,3 +11,8 @@ export interface EntEntity {
   value: string;
   type: number;
 }
+
+export interface Ent {
+  value: string;
+  type: number;
+}

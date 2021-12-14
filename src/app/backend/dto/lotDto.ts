@@ -3,6 +3,7 @@ export interface LotDto {
   model: string;
   price: number;
   year: number;
+  description: string;
   horsePower: number;
   photos?: string[];
   numberOfCar?: number;

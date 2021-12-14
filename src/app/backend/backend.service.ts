@@ -36,8 +36,14 @@ export class BackendService {
       });
     },
 
-    post$: (lot: Lot) => {
-      // const url = makeApiUrl()
+    post$: (lot: any) => {
+      const url = makeApiUrl(`shopModels`);
+      return this.http.post(url, lot);
+    },
+
+    delete$: (lotId: string) => {
+      const url = makeApiUrl(`shopModels/${lotId}`);
+      return this.http.delete(url);
     },
 
     // get2$: (id: string) => {

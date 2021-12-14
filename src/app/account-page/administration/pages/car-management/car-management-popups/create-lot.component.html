@@ -14,6 +14,8 @@
     <input type="text" class="app-input" formControlName="year" />
     <label class="app-label">Horse power</label>
     <input type="text" class="app-input" formControlName="horsePower" />
+    <label class="app-label">Number of cars</label>
+    <input type="text" class="app-input" formControlName="numberOfCar" />
     <label class="app-label">Price</label>
     <input type="text" class="app-input" formControlName="price" />
     <label class="app-label">Description</label>
@@ -24,8 +26,16 @@
       class="app-input"
       formControlName="description"
     ></textarea>
-    <label class="app-label">Storage Address</label>
-    <input type="text" class="app-input" formControlName="storageAddress" />
+    <label class="app-label">Storage address</label>
+    <select
+      *ngIf="storagesList$ | async as storages"
+      formControlName="storageAddress"
+      class="app-select"
+    >
+      <option *ngFor="let item of storages" [value]="item.address">
+        {{ item.address }}
+      </option>
+    </select>
     <hr />
     <ng-container *ngIf="entList$ | async as ents">
       <h3>Characteristics:</h3>
@@ -38,37 +48,38 @@
         </select>
       </div> -->
 
-      <label class="app-label">Description</label>
+      <label class="app-label">Carcase</label>
       <select formControlName="carcase" class="app-select">
         <option *ngFor="let item of ents.carcase" [value]="item.value">
           {{ item.value }}
         </option>
       </select>
-      <label class="app-label">Description</label>
+      <label class="app-label">Engine</label>
       <select formControlName="engine" class="app-select">
         <option *ngFor="let item of ents.engine" [value]="item.value">
           {{ item.value }}
         </option>
       </select>
-      <label class="app-label">Description</label>
+      <label class="app-label">Mark</label>
       <select formControlName="mark" class="app-select">
         <option *ngFor="let item of ents.mark" [value]="item.value">
           {{ item.value }}
         </option>
       </select>
-      <label class="app-label">Description</label>
+      <label class="app-label">Drive type</label>
       <select formControlName="drive" class="app-select">
         <option *ngFor="let item of ents.drive" [value]="item.value">
           {{ item.value }}
         </option>
       </select>
-      <label class="app-label">Description</label>
+      <label class="app-label">Transmission</label>
       <select formControlName="transmission" class="app-select">
         <option *ngFor="let item of ents.transmission" [value]="item.value">
           {{ item.value }}
         </option>
       </select>
     </ng-container>
+    <button class="app-button" (click)="create()">Добавить</button>
   </form>
 </section>
 <footer></footer>

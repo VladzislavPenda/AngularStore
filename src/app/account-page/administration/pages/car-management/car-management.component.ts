@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { OverlayRootService } from 'src/app/app-core/overlay-root.service';
+import { SnackService } from 'src/app/app-core/snack.service';
 import { Lot } from 'src/app/catalog/lot/domain';
 import { CreateLotComponent } from './car-management-popups/create-lot.component';
 import { EditLotComponent } from './car-management-popups/edit-lot.component';
@@ -16,7 +17,8 @@ export class CarManagementComponent implements OnInit {
   public items$: Observable<{ list: Lot[]; pages: number }>;
   constructor(
     private carManagementService: CarManagementService,
-    private overlay: OverlayRootService
+    private overlay: OverlayRootService,
+    private snackbarService: SnackService
   ) {}
 
   ngOnInit() {
@@ -46,7 +48,15 @@ export class CarManagementComponent implements OnInit {
   }
 
   //todo implement
-  public deleteLot() {
-    console.log('delete');
+  public deleteLot(lotId: string) {
+    this.carManagementService.deleteLot(lotId).subscribe((e) => {
+      console.log(e);
+      this.snackbarService.showConfigured('success', {
+        message: 'Lot was deleted.',
+      });
+
+      this.items$ = this.carManagementService.loadCarList();
+    });
+    console.log(lotId);
   }
 }

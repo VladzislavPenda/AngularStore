@@ -6,6 +6,7 @@ export interface Lot {
   price: number;
   year: number;
   horsePower: number;
+  description: string;
   photos?: string[];
   numberOfCar?: number;
   storageId?: string;

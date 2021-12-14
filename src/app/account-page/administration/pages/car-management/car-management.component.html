@@ -23,7 +23,7 @@
       <span *ngFor="let item of model.characteristics">
         {{ item.name }}: {{ item.value }} <br />
       </span>
-      <button class="app-button" (click)="deleteLot()">Delete</button>
+      <button class="app-button" (click)="deleteLot(model.id)">Delete</button>
       <button class="app-button" (click)="editLot()">Edit</button>
     </div>
   </ng-template>
