@@ -14,6 +14,7 @@ import { CarManagementService } from './car-management.service';
   providers: [CarManagementService],
 })
 export class CarManagementComponent implements OnInit {
+  private timeout: number;
   public items$: Observable<{ list: Lot[]; pages: number }>;
   constructor(
     private carManagementService: CarManagementService,
@@ -59,4 +60,16 @@ export class CarManagementComponent implements OnInit {
     });
     console.log(lotId);
   }
+
+  // private onScroll() {
+  // 	clearTimeout(this.timeout);
+  // 	this.timeout = setTimeout(() => {
+  // 		const elementRect = this.elementRef.nativeElement.getBoundingClientRect();
+  // 		const parentRect = this.scrollableParent.getBoundingClientRect();
+  // 		if (elementRect.top >= parentRect.top
+  // 			&& (this.fullView ? elementRect.bottom < parentRect.bottom : elementRect.top < parentRect.bottom)) {
+  // 			this.inScroll$.emit();
+  // 		}
+  // 	}, 300) as any;
+  // }
 }

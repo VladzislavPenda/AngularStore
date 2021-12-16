@@ -20,7 +20,23 @@
             Year: <span>{{ lot.year }}</span>
           </li>
         </ul>
-        <button class="app-button">To cart</button>
+        <ng-container [ngSwitch]="isLotInCart(lot.id)">
+          <button
+            class="app-button"
+            *ngSwitchCase="false"
+            (click)="addToCart(lot.id)"
+          >
+            To cart
+          </button>
+          <button
+            class="app-button"
+            *ngSwitchCase="true"
+            (click)="removeFromCart(lot.id)"
+          >
+            Remove from cart
+          </button>
+        </ng-container>
+
         <button class="app-button">To favourite</button>
       </div>
     </div>

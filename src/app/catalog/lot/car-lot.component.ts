@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CarCatalogService } from '../cars/car-catalog.service';
@@ -9,6 +14,7 @@ import { Lot } from './domain';
   selector: 'app-car-lot',
   templateUrl: './car-lot.component.html',
   styleUrls: ['./car-lot.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [CarLotService],
 })
 export class CarLotComponent implements OnInit {
@@ -16,18 +22,33 @@ export class CarLotComponent implements OnInit {
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly service: CarLotService
+    private readonly service: CarLotService,
+    private readonly cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe((e) => {
       const id = e.get('id');
       this.lot$ = this.service.loadLot(id);
-      this.service.loadLot(id).subscribe((e) => console.log(e));
     });
+  }
+
+  public isLotInCart(lotId: string) {
+    console.log(this.service.isLotInCart(lotId));
+    return this.service.isLotInCart(lotId);
   }
 
   public goBack() {
     this.router.navigateByUrl('/catalog');
+  }
+
+  public addToCart(lotId: string) {
+    this.service.addLotToCart(lotId);
+    this.cdr.detectChanges();
+  }
+
+  public removeFromCart(lotId: string) {
+    this.service.removeLotFromCart(lotId);
+    this.cdr.detectChanges();
   }
 }

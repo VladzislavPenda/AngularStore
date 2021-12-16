@@ -8,6 +8,7 @@ export interface LotShort {
 export interface CarListFilter {
   pageSize?: number;
   pageNumber?: number;
+  ids?: string[];
 }
 
 export function mapCarFilterToParams(filter: CarListFilter) {
