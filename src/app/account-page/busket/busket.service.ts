@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
+import { stringify } from 'querystring';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { BackendService } from 'src/app/backend/backend.service';
 import { CarListFilter } from 'src/app/catalog/cars/domain';
+import { Lot } from 'src/app/catalog/lot/domain';
 
 @Injectable()
 export class BusketService {
@@ -9,13 +13,34 @@ export class BusketService {
     this.filter = {
       pageSize: 30,
       pageNumber: 1,
-      // ids:
+      ids: this.getLotsFromBusket(),
     };
   }
 
   public loadLots() {
-    this.backendService.shop.getPagedModels$;
+    console.log(this.filter);
+    if (!this.filter.ids || this.filter.ids.length === 0) {
+      console.log('empty');
+      return of([]) as Observable<Lot[]>;
+    }
+    return this.backendService.shop
+      .getPagedModels$(this.filter)
+      .pipe(map((e) => e.body));
   }
 
-  public getLotsFromBusket() {}
+  public deleteLotFromCart(id: string) {
+    this.filter.ids = this.filter.ids.filter((e) => e !== id);
+    localStorage.setItem('CART_LOT_IDS', JSON.stringify(this.filter.ids));
+  }
+
+  public getLotsFromBusket() {
+    const data = localStorage.getItem('CART_LOT_IDS');
+    return data ? JSON.parse(data) : [];
+  }
+
+  public setCart(ids: string[]) {
+    console.log(ids);
+    this.filter.ids = [];
+    localStorage.setItem('CART_LOT_IDS', JSON.stringify(ids));
+  }
 }

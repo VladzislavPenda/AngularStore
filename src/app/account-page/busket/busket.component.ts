@@ -1,19 +1,46 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from 'src/app/backend/backend.service';
+import { Observable } from 'rxjs';
+import { Lot } from 'src/app/catalog/lot/domain';
 import { BusketService } from './busket.service';
 
 @Component({
   selector: 'app-busket',
   templateUrl: './busket.component.html',
   styleUrls: ['./busket.component.scss'],
+  providers: [BusketService],
 })
 export class BusketComponent implements OnInit {
-  constructor(private service: BusketService) {}
+  public busketLots$: Observable<Lot[] | undefined>;
+  constructor(private service: BusketService) {
+    const ids = this.getLotsFromCart();
+    this.service.loadLots;
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.busketLots$ = this.service.loadLots();
+    this.loadLots();
+  }
+
+  public func(data: any) {
+    console.log(data);
+  }
+
+  //todo Refactor with hot subscribing
+  public loadLots() {
+    this.busketLots$ = this.service.loadLots();
+  }
+
+  public clearCart() {
+    this.service.setCart([]);
+    this.loadLots();
+  }
+
+  public deleteLotFromCart(id: string) {
+    this.service.deleteLotFromCart(id);
+    this.loadLots();
+  }
 
   private getLotsFromCart() {
-    const data = localStorage.getItem('CART_LOT_IDS');
-    return data ? JSON.parse(data) : [];
+    return this.service.getLotsFromBusket();
   }
 }

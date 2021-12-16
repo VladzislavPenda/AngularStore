@@ -1,0 +1,27 @@
+:host {
+  display: block;
+  background-color: #f0f2f7;
+  padding: 1rem;
+  height: 100%;
+
+  .car-lot {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    margin: 1rem 1rem 0 1rem;
+    background-color: rgb(251, 252, 247);
+    padding: 1rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    app-icon-fontawesome {
+      font-size: 1rem;
+    }
+  }
+
+  .empty-list-container {
+    text-align: center;
+  }
+}

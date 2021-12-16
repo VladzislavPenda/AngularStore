@@ -24,5 +24,9 @@ export function mapCarFilterToParams(filter: CarListFilter) {
     params.pageSize = filter.pageSize;
   }
 
+  if (filter.ids) {
+    params.ids = filter.ids;
+  }
+
   return params;
 }

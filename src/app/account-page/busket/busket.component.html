@@ -1,1 +1,21 @@
-<p>in develop</p>
+<header>
+  <button class="app-button" (click)="clearCart()">Clear cart</button>
+</header>
+<section *ngIf="busketLots$ | async as lots">
+  <ng-container *ngIf="lots.length; else emptyList">
+    <div class="car-lot" *ngFor="let lot of lots">
+      <span>
+        <strong>{{ lot.model }}</strong> - {{ lot.price }} USD <br />
+      </span>
+      <app-icon-fontawesome (click)="deleteLotFromCart(lot.id)">
+        &#xf00d;
+      </app-icon-fontawesome>
+    </div>
+  </ng-container>
+  <ng-template #emptyList>
+    <div class="empty-list-container">
+      Your cart is empty!<br />You can choose your car in
+      <a routerLink="/catalog">catalog</a>
+    </div>
+  </ng-template>
+</section>
