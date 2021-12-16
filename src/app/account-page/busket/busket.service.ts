@@ -18,7 +18,6 @@ export class BusketService {
   }
 
   public loadLots() {
-    console.log(this.filter);
     if (!this.filter.ids || this.filter.ids.length === 0) {
       console.log('empty');
       return of([]) as Observable<Lot[]>;
@@ -39,7 +38,6 @@ export class BusketService {
   }
 
   public setCart(ids: string[]) {
-    console.log(ids);
     this.filter.ids = [];
     localStorage.setItem('CART_LOT_IDS', JSON.stringify(ids));
   }
