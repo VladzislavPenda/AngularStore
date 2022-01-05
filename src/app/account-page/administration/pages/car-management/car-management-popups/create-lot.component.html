@@ -36,7 +36,6 @@
         {{ item.address }}
       </option>
     </select>
-    <hr />
     <ng-container *ngIf="entList$ | async as ents">
       <h3>Characteristics:</h3>
       <!-- <div *ngFor="let item of getObjectKeys(ents)">
@@ -79,6 +78,14 @@
         </option>
       </select>
     </ng-container>
+    <label class="app-label">Lot photos</label>
+    <input
+      #imageInput
+      formControlName="photos"
+      type="file"
+      accept=".jpg"
+      (change)="processFile(imageInput)"
+    />
     <button class="app-button" (click)="create()">Добавить</button>
   </form>
 </section>

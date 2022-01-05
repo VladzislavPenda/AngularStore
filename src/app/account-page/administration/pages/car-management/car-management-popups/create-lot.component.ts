@@ -7,22 +7,33 @@ import { BackendService } from 'src/app/backend/backend.service';
 import { Ent, EntDto } from 'src/app/backend/dto/entDto';
 import { StorageDto } from 'src/app/backend/dto/storageDto';
 import { Lot } from 'src/app/catalog/lot/domain';
+import { LotService } from './lot.service';
+
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
 
 @Component({
   selector: 'app-create-lot',
   templateUrl: './create-lot.component.html',
   styleUrls: ['./create-lot.component.scss'],
+  providers: [LotService],
 })
 export class CreateLotComponent extends PopupComponent<void> implements OnInit {
   public entList$: Observable<EntDto>;
   public storagesList$: Observable<StorageDto[]>;
   public form: FormGroup;
+  public selectedFile: ImageSnippet;
 
-  constructor(private fb: FormBuilder, private backendService: BackendService) {
+  public constructor(
+    private fb: FormBuilder,
+    private backendService: BackendService,
+    private lotService: LotService
+  ) {
     super();
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.entList$ = this.backendService.ent.getEntsList().pipe(
       map((e) => {
         return getUpperCaseCharacteristicsValues(e);
@@ -31,6 +42,30 @@ export class CreateLotComponent extends PopupComponent<void> implements OnInit {
 
     this.storagesList$ = this.backendService.storages.getStorages$();
     this.form = this.initForm();
+  }
+
+  public processFile(imageInput: any) {
+    console.log(imageInput);
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) => {
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+
+      console.log(this.selectedFile);
+      this.lotService
+        .loadImage(this.selectedFile.file)
+        .subscribe((e) => console.log(e));
+      // this.imageService.uploadImage(this.selectedFile.file).subscribe(
+      //   (res) => {
+
+      //   },
+      //   (err) => {
+
+      //   })
+    });
+
+    reader.readAsDataURL(file);
   }
 
   public initForm() {
@@ -47,6 +82,7 @@ export class CreateLotComponent extends PopupComponent<void> implements OnInit {
       engine: [null],
       transmission: [null],
       mark: [null],
+      photos: [null],
     });
   }
 

@@ -1,0 +1,18 @@
+<ng-container>
+  <div
+    class="entity-card"
+    *ngFor="let item of items.list"
+    #expandElem="appExpandItem"
+    appExpand
+    [expandContext]="item"
+    [expandTemplate]="expandTemplate"
+  >
+    <ng-container *ngTemplateOutlet="row; context: { $implicit: item }">
+    </ng-container>
+    <app-expand-icon
+      *ngIf="expandTemplate"
+      [isExpanded]="expandElem.isExpanded()"
+    >
+    </app-expand-icon>
+  </div>
+</ng-container>

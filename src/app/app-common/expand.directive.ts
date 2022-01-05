@@ -24,6 +24,9 @@ export class ExpandDirective {
 
   @HostListener('click')
   public changeExpandableView() {
+    if (!this.expandTemplate) {
+      return;
+    }
     if (this.view) {
       this.vcr.clear();
       this.view = null;

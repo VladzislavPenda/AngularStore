@@ -10,10 +10,9 @@
     padding: 1rem 1.5rem 0 1.5rem;
     text-align: left;
     border-bottom: #fdb819 1px solid;
-    --text-font-size: 20px;
+    font-size: 20px;
 
     .close-icon {
-      font-size: 1.3em;
       color: slategrey;
       border-radius: 5px;
       transition: all 0.3s;

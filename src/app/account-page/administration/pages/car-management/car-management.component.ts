@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { OverlayRootService } from 'src/app/app-core/overlay-root.service';
 import { SnackService } from 'src/app/app-core/snack.service';
 import { Lot } from 'src/app/catalog/lot/domain';
@@ -59,6 +59,10 @@ export class CarManagementComponent implements OnInit {
       this.items$ = this.carManagementService.loadCarList();
     });
     console.log(lotId);
+  }
+
+  public func(data: any) {
+    console.log(data);
   }
 
   // private onScroll() {
