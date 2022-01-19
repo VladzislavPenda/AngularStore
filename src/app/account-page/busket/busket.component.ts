@@ -17,12 +17,7 @@ export class BusketComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.busketLots$ = this.service.loadLots();
     this.loadLots();
-  }
-
-  public func(data: any) {
-    console.log(data);
   }
 
   //todo Refactor with hot subscribing

@@ -34,7 +34,6 @@ export class CarLotComponent implements OnInit {
   }
 
   public isLotInCart(lotId: string) {
-    console.log(this.service.isLotInCart(lotId));
     return this.service.isLotInCart(lotId);
   }
 

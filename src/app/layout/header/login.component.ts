@@ -60,12 +60,6 @@ export class LoginComponent extends PopupComponent<void> implements OnInit {
 
           localStorage.setItem('token', token);
           this.store$.dispatch(setToken({ token, user }));
-
-          // this.store$.select(authSelector).pipe(
-          //   map((e) => {
-          //     console.log(e);
-          //   })
-          // );
           this.close();
         },
         (err) => {

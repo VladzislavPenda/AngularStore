@@ -15,20 +15,13 @@ import { InputComponent } from './input.directive';
   templateUrl: './textbox.component.html',
   styleUrls: ['./textbox.component.scss'],
 })
-export class TextboxComponent
-  extends InputComponent<string>
-  implements OnInit, OnChanges
-{
+export class TextboxComponent extends InputComponent<string> implements OnInit {
   @Input() textType?: 'text' | 'password';
   constructor(private readonly cdr: ChangeDetectorRef) {
     super();
   }
 
   ngOnInit() {}
-
-  public ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
-  }
 
   public onInput(value: string) {
     this.setInteractiveValue(value.trim());

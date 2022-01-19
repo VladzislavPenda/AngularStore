@@ -22,7 +22,6 @@ export class AuthGuard implements CanActivate {
     | UrlTree {
     return this.store$.select(authSelector).pipe(
       map((e) => {
-        console.log(1);
         if (e.token) return true;
 
         this.snackService.showConfigured('failed', {

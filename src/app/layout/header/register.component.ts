@@ -34,7 +34,6 @@ export class RegisterComponent extends PopupComponent<void> implements OnInit {
   ngOnInit() {}
 
   public register() {
-    console.log(this.form);
     if (
       this.form.value.password == this.form.value.retypePassword &&
       this.form.valid

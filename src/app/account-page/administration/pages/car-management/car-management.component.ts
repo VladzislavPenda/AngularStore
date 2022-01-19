@@ -51,18 +51,12 @@ export class CarManagementComponent implements OnInit {
   //todo implement
   public deleteLot(lotId: string) {
     this.carManagementService.deleteLot(lotId).subscribe((e) => {
-      console.log(e);
       this.snackbarService.showConfigured('success', {
         message: 'Lot was deleted.',
       });
 
       this.items$ = this.carManagementService.loadCarList();
     });
-    console.log(lotId);
-  }
-
-  public func(data: any) {
-    console.log(data);
   }
 
   // private onScroll() {

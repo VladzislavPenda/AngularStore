@@ -152,3 +152,19 @@ body {
     background-color: #f3f3f3;
   }
 }
+
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 7px !important;
+  height: 7px !important;
+}
+
+::-webkit-scrollbar-button {
+  display: none !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: fade-out(#aaa, 0.3);
+  border: none;
+  border-radius: 7px;
+}

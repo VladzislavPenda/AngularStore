@@ -71,7 +71,7 @@ export class BackendService {
       const formData = new FormData();
       formData.append('file', image);
       const url = makeApiUrl('file/image/new');
-      return this.http.post(url, formData);
+      return this.http.post<string>(url, formData);
     },
   };
 

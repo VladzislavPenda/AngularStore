@@ -6,7 +6,6 @@ import { PopupComponent } from 'src/app/app-common/popup.component';
 import { BackendService } from 'src/app/backend/backend.service';
 import { Ent, EntDto } from 'src/app/backend/dto/entDto';
 import { StorageDto } from 'src/app/backend/dto/storageDto';
-import { Lot } from 'src/app/catalog/lot/domain';
 import { LotService } from './lot.service';
 
 class ImageSnippet {
@@ -45,24 +44,15 @@ export class CreateLotComponent extends PopupComponent<void> implements OnInit {
   }
 
   public processFile(imageInput: any) {
-    console.log(imageInput);
     const file: File = imageInput.files[0];
     const reader = new FileReader();
 
     reader.addEventListener('load', (event: any) => {
       this.selectedFile = new ImageSnippet(event.target.result, file);
 
-      console.log(this.selectedFile);
-      this.lotService
-        .loadImage(this.selectedFile.file)
-        .subscribe((e) => console.log(e));
-      // this.imageService.uploadImage(this.selectedFile.file).subscribe(
-      //   (res) => {
-
-      //   },
-      //   (err) => {
-
-      //   })
+      this.lotService.loadImage(this.selectedFile.file).subscribe((e) => {
+        this.form.patchValue({ pictures: e });
+      });
     });
 
     reader.readAsDataURL(file);
@@ -82,7 +72,7 @@ export class CreateLotComponent extends PopupComponent<void> implements OnInit {
       engine: [null],
       transmission: [null],
       mark: [null],
-      photos: [null],
+      pictures: [null],
     });
   }
 
@@ -100,35 +90,34 @@ export class CreateLotComponent extends PopupComponent<void> implements OnInit {
     const value = this.form.value;
     const ents: Ent[] = [];
     if (value.carcase) {
-      console.log(1);
       ents.push({
         value: value.carcase,
         type: 1,
       });
     }
+
     if (value.drive) {
-      console.log(1);
       ents.push({
         value: value.drive,
         type: 3,
       });
     }
+
     if (value.engine) {
-      console.log(1);
       ents.push({
         value: value.engine,
         type: 2,
       });
     }
+
     if (value.transmission) {
-      console.log(1);
       ents.push({
         value: value.transmission,
         type: 4,
       });
     }
+
     if (value.mark) {
-      console.log(1);
       ents.push({
         value: value.mark,
         type: 5,
@@ -143,6 +132,7 @@ export class CreateLotComponent extends PopupComponent<void> implements OnInit {
       numberOfCar: value.numberOfCar,
       description: value.description,
       storageAddress: value.storageAddress,
+      pictures: [value.pictures],
       ents: ents,
     };
   }

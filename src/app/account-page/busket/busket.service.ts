@@ -19,7 +19,6 @@ export class BusketService {
 
   public loadLots() {
     if (!this.filter.ids || this.filter.ids.length === 0) {
-      console.log('empty');
       return of([]) as Observable<Lot[]>;
     }
     return this.backendService.shop
